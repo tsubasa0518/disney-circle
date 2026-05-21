@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450">
+  <defs>
+    <radialGradient id="bg1" cx="50%" cy="50%" r="70%">
+      <stop offset="0%" stop-color="#00bcd4"/>
+      <stop offset="60%" stop-color="#0097a7"/>
+      <stop offset="100%" stop-color="#004d5a"/>
+    </radialGradient>
+    <radialGradient id="glow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="white" stop-opacity="0.15"/>
+      <stop offset="100%" stop-color="white" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="800" height="450" fill="url(#bg1)"/>
+  <rect width="800" height="450" fill="url(#glow)"/>
+  <!-- Stars -->
+  <g fill="white" opacity="0.6">
+    <circle cx="80" cy="60" r="1.5"/><circle cx="150" cy="30" r="1"/><circle cx="220" cy="80" r="2"/>
+    <circle cx="350" cy="20" r="1.5"/><circle cx="500" cy="50" r="1"/><circle cx="620" cy="35" r="2"/>
+    <circle cx="720" cy="80" r="1.5"/><circle cx="760" cy="140" r="1"/><circle cx="100" cy="200" r="1.5"/>
+    <circle cx="680" cy="250" r="2"/><circle cx="50" cy="350" r="1"/><circle cx="740" cy="380" r="1.5"/>
+    <!-- Sparkles -->
+    <path d="M120 100 L122 106 L128 108 L122 110 L120 116 L118 110 L112 108 L118 106Z" opacity="0.8"/>
+    <path d="M650 80 L652 86 L658 88 L652 90 L650 96 L648 90 L642 88 L648 86Z" opacity="0.8"/>
+    <path d="M700 300 L702 306 L708 308 L702 310 L700 316 L698 310 L692 308 L698 306Z" opacity="0.6"/>
+  </g>
+  <!-- Mickey silhouette -->
+  <g transform="translate(130, 110)" opacity="0.25" fill="white">
+    <circle cx="60" cy="80" r="55"/>
+    <circle cx="20" cy="28" r="32"/>
+    <circle cx="100" cy="28" r="32"/>
+  </g>
+  <!-- Text -->
+  <text x="400" y="160" text-anchor="middle" font-family="Georgia, serif" font-size="22" fill="white" opacity="0.7" letter-spacing="6">TOKYO DISNEY SEA</text>
+  <text x="400" y="230" text-anchor="middle" font-family="Georgia, serif" font-size="52" fill="white" font-weight="bold">Sparkling</text>
+  <text x="400" y="295" text-anchor="middle" font-family="Georgia, serif" font-size="52" fill="white" font-weight="bold">Jubilee</text>
+  <text x="580" y="300" text-anchor="middle" font-family="Georgia, serif" font-size="90" fill="white" font-weight="bold" opacity="0.9">25</text>
+  <!-- Bottom shimmer -->
+  <rect x="0" y="400" width="800" height="50" fill="white" opacity="0.05"/>
+  <rect x="200" y="430" width="400" height="2" fill="white" opacity="0.2" rx="1"/>
+</svg>

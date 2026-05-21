@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450">
+  <defs>
+    <linearGradient id="bg2" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1a237e"/>
+      <stop offset="50%" stop-color="#283593"/>
+      <stop offset="100%" stop-color="#0d1b5e"/>
+    </linearGradient>
+    <radialGradient id="castle-glow" cx="50%" cy="80%" r="50%">
+      <stop offset="0%" stop-color="#c8a951" stop-opacity="0.2"/>
+      <stop offset="100%" stop-color="#c8a951" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="800" height="450" fill="url(#bg2)"/>
+  <rect width="800" height="450" fill="url(#castle-glow)"/>
+  <!-- Stars -->
+  <g fill="white">
+    <circle cx="60" cy="40" r="1" opacity="0.8"/><circle cx="140" cy="70" r="1.5" opacity="0.6"/>
+    <circle cx="250" cy="30" r="1" opacity="0.9"/><circle cx="380" cy="55" r="2" opacity="0.5"/>
+    <circle cx="450" cy="25" r="1" opacity="0.8"/><circle cx="560" cy="60" r="1.5" opacity="0.7"/>
+    <circle cx="680" cy="40" r="1" opacity="0.6"/><circle cx="760" cy="90" r="2" opacity="0.8"/>
+    <circle cx="90" cy="150" r="1" opacity="0.5"/><circle cx="710" cy="200" r="1.5" opacity="0.6"/>
+  </g>
+  <!-- Castle silhouette -->
+  <g fill="#c8a951" opacity="0.12" transform="translate(250, 60)">
+    <rect x="120" y="140" width="60" height="190"/>
+    <rect x="60" y="170" width="40" height="160"/>
+    <rect x="200" y="170" width="40" height="160"/>
+    <rect x="10" y="200" width="40" height="130"/>
+    <rect x="250" y="200" width="40" height="130"/>
+    <polygon points="150,40 120,140 180,140"/>
+    <polygon points="80,100 60,170 100,170"/>
+    <polygon points="220,100 200,170 240,170"/>
+    <polygon points="30,140 10,200 50,200"/>
+    <polygon points="270,140 250,200 290,200"/>
+  </g>
+  <!-- Mickey silhouette large -->
+  <g transform="translate(60, 80)" opacity="0.12" fill="#c8a951">
+    <circle cx="80" cy="105" r="75"/>
+    <circle cx="25" cy="35" r="45"/>
+    <circle cx="135" cy="35" r="45"/>
+  </g>
+  <!-- Decorative line -->
+  <rect x="150" y="195" width="500" height="1" fill="#c8a951" opacity="0.3"/>
+  <!-- Text -->
+  <text x="400" y="175" text-anchor="middle" font-family="Georgia, serif" font-size="16" fill="#c8a951" letter-spacing="8" opacity="0.8">TOKYO DISNEY RESORT</text>
+  <text x="400" y="260" text-anchor="middle" font-family="Georgia, serif" font-size="46" fill="white" font-weight="bold">Classic Characters</text>
+  <text x="400" y="320" text-anchor="middle" font-family="Georgia, serif" font-size="24" fill="#c8a951" letter-spacing="3">Mickey · Minnie · Donald · Goofy · Pluto</text>
+  <rect x="150" y="340" width="500" height="1" fill="#c8a951" opacity="0.3"/>
+  <text x="400" y="380" text-anchor="middle" font-family="Georgia, serif" font-size="14" fill="white" opacity="0.5" letter-spacing="4">WHERE DREAMS COME TRUE</text>
+</svg>

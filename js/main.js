@@ -455,4 +455,43 @@ document.addEventListener('DOMContentLoaded', () => {
   const nextBtn = document.getElementById('cal-next');
   if (prevBtn) prevBtn.addEventListener('click', prevMonth);
   if (nextBtn) nextBtn.addEventListener('click', nextMonth);
+
+  initSlideshow();
 });
+
+// ===== SLIDESHOW =====
+function initSlideshow() {
+  const slides = document.querySelectorAll('.slide');
+  const dots   = document.querySelectorAll('.dot');
+  if (!slides.length) return;
+
+  let current = 0;
+  let timer   = null;
+
+  function goTo(index) {
+    slides[current].classList.remove('active');
+    dots[current].classList.remove('active');
+    current = (index + slides.length) % slides.length;
+    slides[current].classList.add('active');
+    dots[current].classList.add('active');
+  }
+
+  function startAuto() {
+    timer = setInterval(() => goTo(current + 1), 1500);
+  }
+
+  function stopAuto() {
+    clearInterval(timer);
+  }
+
+  // Dot click — jump to slide, restart timer
+  dots.forEach(dot => {
+    dot.addEventListener('click', () => {
+      stopAuto();
+      goTo(Number(dot.dataset.index));
+      startAuto();
+    });
+  });
+
+  startAuto();
+}
