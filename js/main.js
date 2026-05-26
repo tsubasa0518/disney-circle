@@ -1,5 +1,17 @@
 // Disney Event Site - Main JS
 
+// ===== GALLERY ITEMS =====
+// 画像を差し替える場合は image の src を変更してください
+const galleryItems = [
+  { image: 'images/pic1.jpg', label: 'Park Visit',   title: '新歓インパ' },
+  { image: 'images/pic2.jpg', label: 'Quiz Night',   title: 'クイズ会' },
+  { image: 'images/pic3.jpg', label: 'Movie Night',  title: '映画鑑賞会' },
+  { image: 'images/pic1.jpg', label: 'Halloween',    title: 'ハロウィーンインパ' },
+  { image: 'images/pic2.jpg', label: 'Yukata Park',  title: '浴衣インパ' },
+  { image: 'images/pic3.jpg', label: 'Dinner',       title: 'ご飯会' },
+  { image: 'images/pic1.jpg', label: 'Festival',     title: '一橋祭出店' },
+];
+
 const EVENTS = [
   {
     id: 'spring-carnival',
@@ -433,13 +445,15 @@ document.addEventListener('DOMContentLoaded', () => {
   initScrollAnimations();
   initScrollTop();
   initSparkles();
+  initGallery();
+
+  // Subpage-specific inits (safely no-op when elements are absent)
   initCountdown();
   renderEvents();
   renderSweets();
   renderCalendar();
   initFilterTabs();
 
-  // Modal close handlers
   const overlay = document.getElementById('event-modal-overlay');
   if (overlay) {
     overlay.addEventListener('click', (e) => {
@@ -450,7 +464,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // Calendar nav
   const prevBtn = document.getElementById('cal-prev');
   const nextBtn = document.getElementById('cal-next');
   if (prevBtn) prevBtn.addEventListener('click', prevMonth);
@@ -458,6 +471,28 @@ document.addEventListener('DOMContentLoaded', () => {
 
   initSlideshow();
 });
+
+// ===== GALLERY =====
+function initGallery() {
+  const track = document.getElementById('gallery-track');
+  if (!track) return;
+
+  function makeCard(item, hidden) {
+    return `<div class="gallery-card"${hidden ? ' aria-hidden="true"' : ''}>
+      <img src="${item.image}" alt="${hidden ? '' : item.title}" class="gallery-img">
+      <div class="gallery-overlay"></div>
+      <div class="gallery-caption">
+        <span class="gallery-label">${item.label}</span>
+        <span class="gallery-title">${item.title}</span>
+      </div>
+    </div>`;
+  }
+
+  // original + clones for seamless CSS loop
+  track.innerHTML =
+    galleryItems.map(item => makeCard(item, false)).join('') +
+    galleryItems.map(item => makeCard(item, true)).join('');
+}
 
 // ===== SLIDESHOW =====
 function initSlideshow() {
