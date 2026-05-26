@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Disney Magic Events | 東京ディズニーリゾート イベント情報</title>
-  <meta name="description" content="東京ディズニーリゾートの最新イベント情報。ハロウィーン、クリスマス、イースターなど年間イベントをご紹介。" />
+  <title>Disney Circle Mouse | 一橋・津田塾ディズニー同好会</title>
+  <meta name="description" content="一橋・津田塾ディズニー同好会マウス。インパ企画・クイズ会・映画鑑賞会などを通してディズニー好きが集まる学生サークルです。" />
   <link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
@@ -24,8 +24,8 @@
         <path d="M20 22 Q24 18 28 22 Q26 28 24 30 Q22 28 20 22Z" fill="#c8a951" opacity="0.6"/>
       </svg>
       <div>
-        <div class="nav-logo-text">Disney Magic Events</div>
-        <div class="nav-logo-sub">東京ディズニーランド イベント情報</div>
+        <div class="nav-logo-text">Disney Circle Mouse</div>
+        <div class="nav-logo-sub">一橋・津田塾ディズニー同好会</div>
       </div>
     </a>
     <ul class="nav-links">
@@ -47,16 +47,16 @@
   <div class="hero-bg"></div>
 
   <!-- Full-viewport slideshow -->
-  <div class="hero-slideshow" aria-label="ディズニーイベントスライドショー">
+  <div class="hero-slideshow" aria-label="ディズニーサークルスライドショー">
     <div class="slideshow-track">
       <div class="slide active">
-        <img src="images/pic1.jpg" alt="イベント画像1">
+        <img src="images/pic1.jpg" alt="活動風景1">
       </div>
       <div class="slide">
-        <img src="images/pic2.jpg" alt="イベント画像2">
+        <img src="images/pic2.jpg" alt="活動風景2">
       </div>
       <div class="slide">
-        <img src="images/pic3.jpg" alt="イベント画像3">
+        <img src="images/pic3.jpg" alt="活動風景3">
       </div>
     </div>
     <!-- gradient overlay for text readability -->
@@ -73,171 +73,287 @@
       <button class="dot" data-index="2"></button>
     </div>
 
-    <div class="hero-badge">✦ 2026 Season ✦</div>
-    <h1 class="hero-title">Disney Information<br>Site</h1>
-    <p class="hero-subtitle">Welcome to a world of dreams and magic!</p>
-    <p class="hero-tagline">Tokyo Disney Resort Events</p>
+    <div class="hero-badge">✦ EST. 2013 - STUDENT CIRCLE ✦</div>
+    <h1 class="hero-title">Disney Circle<br>Mouse</h1>
+    <p class="hero-subtitle">一橋・津田塾ディズニー同好会</p>
+    <p class="hero-tagline">ディズニー好きが集まる、自由参加型の学生サークル。</p>
+    <p class="hero-description">インパ企画・鑑賞会・クイズ会・ご飯会などを通して、楽しく交流しています。</p>
     <div class="hero-buttons">
-      <a href="events.html" class="btn btn-primary">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M8 6l4-4 4 4"/><path d="M12 2v10.5"/><rect x="3" y="12" width="18" height="9" rx="2"/></svg>
-        イベントを見る
+      <a href="#about" class="btn btn-primary">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="8" r="4"/><path d="M4 21v-1a8 8 0 0 1 16 0v1"/></svg>
+        サークル紹介
       </a>
-      <a href="calendar.html" class="btn btn-secondary">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
-        カレンダーで確認
+      <a href="#schedule" class="btn btn-primary">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+        活動内容
       </a>
     </div>
   </div>
 </section>
 
-<!-- Countdown Section -->
-<section class="countdown-section">
-  <div class="countdown-wrapper fade-up">
-    <div class="countdown-label" id="countdown-label">次のイベントまで</div>
-    <h2 class="countdown-event-name" id="countdown-event-name">読み込み中...</h2>
-    <div class="countdown-grid" id="countdown-container">
-      <div class="countdown-item">
-        <div class="countdown-number" id="cd-days">00</div>
-        <div class="countdown-unit">日</div>
-      </div>
-      <div class="countdown-separator">:</div>
-      <div class="countdown-item">
-        <div class="countdown-number" id="cd-hours">00</div>
-        <div class="countdown-unit">時間</div>
-      </div>
-      <div class="countdown-separator">:</div>
-      <div class="countdown-item">
-        <div class="countdown-number" id="cd-mins">00</div>
-        <div class="countdown-unit">分</div>
-      </div>
-      <div class="countdown-separator">:</div>
-      <div class="countdown-item">
-        <div class="countdown-number" id="cd-secs">00</div>
-        <div class="countdown-unit">秒</div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- Events Section -->
-<section class="section">
+<!-- ============================
+     01. サークル紹介
+============================= -->
+<section id="about" class="section">
   <div class="container">
     <div class="section-header fade-up">
-      <div class="section-tag">✦ Featured Events ✦</div>
-      <h2 class="section-title">注目のイベント</h2>
-      <p class="section-desc">年間を通じて開催される、夢と魔法のスペシャルイベントをご紹介します。</p>
+      <div class="section-tag">✦ About Us ✦</div>
+      <h2 class="section-title">サークル紹介</h2>
     </div>
-    <div class="events-grid" id="events-grid"></div>
-  </div>
-</section>
-
-<div class="divider container"><span class="divider-icon">✦</span></div>
-
-<!-- Sweets Section -->
-<section class="section">
-  <div class="container">
-    <div class="section-header fade-up">
-      <div class="section-tag">✦ Disney Sweets ✦</div>
-      <h2 class="section-title">魔法のスイーツ</h2>
-      <p class="section-desc">各イベント限定の特別なスイーツ＆グルメをご紹介。見ているだけでも魔法にかかりそう。</p>
-    </div>
-    <div class="sweets-grid" id="sweets-grid"></div>
-    <div style="text-align:center;margin-top:40px;" class="fade-up">
-      <a href="sweets.html" class="btn btn-secondary">スイーツ一覧を見る →</a>
+    <div class="about-body fade-up">
+      <p class="about-text">こんにちは！私たちは一橋・津田塾ディズニー同好会マウスです。</p>
+      <p class="about-text">東京ディズニーリゾートへのインパ企画、ディズニー関連クイズ会、LT、ショー・パレード鑑賞会、ディズニー映画鑑賞会、ご飯会などを通して、ディズニーが好きな人たちが楽しく交流しています。</p>
+      <p class="about-text">ディズニー好きが集まり、それぞれの「好き」を深められるサークルです。映画、ショー、パレード、アトラクション、パークフードなど、さまざまなジャンルに詳しいメンバーがいるため、きっと趣味の合う人が見つかります。</p>
+      <div class="about-tags">
+        <span class="about-tag">#インパ企画</span>
+        <span class="about-tag">#クイズ会</span>
+        <span class="about-tag">#ショー鑑賞</span>
+        <span class="about-tag">#映画鑑賞会</span>
+        <span class="about-tag">#ご飯会</span>
+        <span class="about-tag">#自由参加</span>
+      </div>
     </div>
   </div>
 </section>
 
 <div class="divider container"><span class="divider-icon">✦</span></div>
 
-<!-- Calendar Preview -->
-<section class="section">
+<!-- ============================
+     02. 基本情報
+============================= -->
+<section id="info" class="section">
   <div class="container">
     <div class="section-header fade-up">
-      <div class="section-tag">✦ Event Calendar ✦</div>
-      <h2 class="section-title">イベントカレンダー</h2>
-      <p class="section-desc">月別でイベントの開催日程を確認できます。</p>
+      <div class="section-tag">✦ Basic Info ✦</div>
+      <h2 class="section-title">基本情報</h2>
     </div>
-    <div class="calendar-wrapper fade-up">
-      <div class="calendar-header">
-        <button class="calendar-nav" id="cal-prev">&#8249;</button>
-        <h3 class="calendar-month-title" id="calendar-month-title"></h3>
-        <button class="calendar-nav" id="cal-next">&#8250;</button>
+    <div class="info-list fade-up">
+      <div class="info-item">
+        <span class="info-label">活動場所</span>
+        <span class="info-value">国立・舞浜など</span>
       </div>
-      <div class="calendar-grid">
-        <div class="calendar-weekdays">
-          <div class="calendar-weekday" style="color:#e57373">日</div>
-          <div class="calendar-weekday">月</div>
-          <div class="calendar-weekday">火</div>
-          <div class="calendar-weekday">水</div>
-          <div class="calendar-weekday">木</div>
-          <div class="calendar-weekday">金</div>
-          <div class="calendar-weekday" style="color:#64b5f6">土</div>
-        </div>
-        <div class="calendar-days" id="calendar-days"></div>
+      <div class="info-item">
+        <span class="info-label">活動日</span>
+        <span class="info-value">不定期</span>
       </div>
-      <div class="calendar-legend">
-        <div class="legend-item">
-          <div class="legend-dot" style="background:var(--disney-gold)"></div>
-          イベント開催日
-        </div>
-        <div class="legend-item">
-          <div class="legend-dot" style="background:var(--disney-blue)"></div>
-          今日
-        </div>
+      <div class="info-item">
+        <span class="info-label">活動頻度</span>
+        <span class="info-value">月2〜4回程度</span>
       </div>
-    </div>
-    <div style="text-align:center;margin-top:32px;" class="fade-up">
-      <a href="calendar.html" class="btn btn-secondary">カレンダー全体を見る →</a>
+      <div class="info-item">
+        <span class="info-label">設立年</span>
+        <span class="info-value">2013年</span>
+      </div>
+      <div class="info-item">
+        <span class="info-label">年間でかかる費用</span>
+        <span class="info-value">サークル費なし<span class="info-note">企画ごとに実費を集金</span></span>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- Event Modal -->
-<div class="modal-overlay" id="event-modal-overlay">
-  <div class="modal">
-    <div class="modal-hero">
-      <span class="modal-hero-emoji" style="font-size:80px"></span>
-      <button class="modal-close" onclick="closeEventModal()">✕</button>
+<div class="divider container"><span class="divider-icon">✦</span></div>
+
+<!-- ============================
+     03. メンバー構成
+============================= -->
+<section id="members" class="section">
+  <div class="container">
+    <div class="section-header fade-up">
+      <div class="section-tag">✦ Members ✦</div>
+      <h2 class="section-title">メンバー構成</h2>
     </div>
-    <div class="modal-body">
-      <div class="modal-season"></div>
-      <h2 class="modal-title"></h2>
-      <p class="modal-desc"></p>
-      <div class="modal-info-grid">
-        <div class="modal-info-item">
-          <div class="modal-info-label">開始日</div>
-          <div class="modal-info-value modal-start"></div>
+    <div class="members-panels fade-up">
+
+      <!-- Left: 人数・男女比 -->
+      <div class="member-panel">
+        <h3 class="member-panel-title">メンバー構成</h3>
+        <div class="member-count">96<span class="member-count-unit">人</span></div>
+
+        <div class="gender-bar-labels">
+          <span class="gender-label-m">男子&ensp;30%</span>
+          <span class="gender-label-f">女子&ensp;70%</span>
         </div>
-        <div class="modal-info-item">
-          <div class="modal-info-label">終了日</div>
-          <div class="modal-info-value modal-end"></div>
-        </div>
-        <div class="modal-info-item">
-          <div class="modal-info-label">開催パーク</div>
-          <div class="modal-info-value modal-location"></div>
-        </div>
-        <div class="modal-info-item">
-          <div class="modal-info-label">ステータス</div>
-          <div class="modal-info-value modal-status"></div>
+        <div class="gender-bar" role="img" aria-label="男子30% 女子70%">
+          <div class="gender-bar-m" style="width:30%"></div>
+          <div class="gender-bar-f" style="width:70%"></div>
         </div>
       </div>
-      <div class="modal-highlights">
-        <h4>ハイライト</h4>
-        <ul class="modal-highlight-list modal-highlights-list"></ul>
+
+      <!-- Right: 所属大学 -->
+      <div class="member-panel">
+        <h3 class="member-panel-title">メンバーの所属大学</h3>
+        <div class="incircle-badge">インカレ</div>
+
+        <div class="univ-bar-group">
+          <div class="univ-bar-header">
+            <span class="univ-bar-cat">男子</span>
+            <span class="univ-bar-sub">一橋生</span>
+            <span class="univ-bar-pct">100%</span>
+          </div>
+          <div class="univ-bar-track">
+            <div class="univ-bar-fill" style="width:100%"></div>
+          </div>
+        </div>
+
+        <div class="univ-bar-group">
+          <div class="univ-bar-header">
+            <span class="univ-bar-cat">女子</span>
+            <span class="univ-bar-sub">一橋生</span>
+            <span class="univ-bar-pct">10%</span>
+          </div>
+          <div class="univ-bar-track">
+            <div class="univ-bar-fill" style="width:10%"></div>
+          </div>
+        </div>
+
+        <p class="univ-note">一橋大学、津田塾大学</p>
       </div>
-      <a href="events.html" class="btn btn-primary" style="width:100%;justify-content:center;">詳細を見る</a>
     </div>
   </div>
-</div>
+</section>
+
+<div class="divider container"><span class="divider-icon">✦</span></div>
+
+<!-- ============================
+     04. 年間スケジュール
+============================= -->
+<section id="schedule" class="section">
+  <div class="container">
+    <div class="section-header fade-up">
+      <div class="section-tag">✦ Annual Schedule ✦</div>
+      <h2 class="section-title">年間スケジュール</h2>
+    </div>
+    <div class="timeline fade-up">
+      <div class="timeline-item"><div class="timeline-month">4月</div><div class="timeline-dot-wrap"><div class="timeline-dot"></div><div class="timeline-line"></div></div><div class="timeline-content">新歓企画</div></div>
+      <div class="timeline-item"><div class="timeline-month">5月</div><div class="timeline-dot-wrap"><div class="timeline-dot"></div><div class="timeline-line"></div></div><div class="timeline-content">新歓インパ</div></div>
+      <div class="timeline-item"><div class="timeline-month">6月</div><div class="timeline-dot-wrap"><div class="timeline-dot"></div><div class="timeline-line"></div></div><div class="timeline-content">新入生歓迎ご飯会、同期企画</div></div>
+      <div class="timeline-item"><div class="timeline-month">7月</div><div class="timeline-dot-wrap"><div class="timeline-dot"></div><div class="timeline-line"></div></div><div class="timeline-content">映画鑑賞会</div></div>
+      <div class="timeline-item"><div class="timeline-month">8月</div><div class="timeline-dot-wrap"><div class="timeline-dot"></div><div class="timeline-line"></div></div><div class="timeline-content">浴衣インパ、花火大会企画</div></div>
+      <div class="timeline-item"><div class="timeline-month">9月</div><div class="timeline-dot-wrap"><div class="timeline-dot"></div><div class="timeline-line"></div></div><div class="timeline-content">ご飯会、交流会</div></div>
+      <div class="timeline-item"><div class="timeline-month">10月</div><div class="timeline-dot-wrap"><div class="timeline-dot"></div><div class="timeline-line"></div></div><div class="timeline-content">ハロウィーンインパ、OB・OG会</div></div>
+      <div class="timeline-item"><div class="timeline-month">11月</div><div class="timeline-dot-wrap"><div class="timeline-dot"></div><div class="timeline-line"></div></div><div class="timeline-content">一橋祭出店、代替わりご飯会</div></div>
+      <div class="timeline-item"><div class="timeline-month">12月</div><div class="timeline-dot-wrap"><div class="timeline-dot"></div><div class="timeline-line"></div></div><div class="timeline-content">映画鑑賞会</div></div>
+      <div class="timeline-item"><div class="timeline-month">1月</div><div class="timeline-dot-wrap"><div class="timeline-dot"></div><div class="timeline-line"></div></div><div class="timeline-content">新年会</div></div>
+      <div class="timeline-item"><div class="timeline-month">2月</div><div class="timeline-dot-wrap"><div class="timeline-dot"></div><div class="timeline-line"></div></div><div class="timeline-content">フォトラリー企画</div></div>
+      <div class="timeline-item timeline-item--last"><div class="timeline-month">3月</div><div class="timeline-dot-wrap"><div class="timeline-dot"></div></div><div class="timeline-content">春インパ</div></div>
+    </div>
+    <div class="timeline-footer fade-up">
+      <span class="timeline-footer-label">執行代代替わり</span>
+      代替わり 11月&ensp;/&ensp;執行代 2年
+    </div>
+  </div>
+</section>
+
+<div class="divider container"><span class="divider-icon">✦</span></div>
+
+<!-- ============================
+     05. 活動風景
+============================= -->
+<section id="gallery" class="section section--gallery">
+  <div class="container">
+    <div class="section-header fade-up">
+      <div class="section-tag">✦ Gallery ✦</div>
+      <h2 class="section-title">活動風景</h2>
+    </div>
+  </div>
+  <div class="gallery-overflow">
+    <div class="gallery-track">
+      <!-- original -->
+      <div class="gallery-card">
+        <img src="images/pic1.jpg" alt="活動風景" class="gallery-img">
+        <div class="gallery-overlay"></div>
+      </div>
+      <div class="gallery-card">
+        <img src="images/pic2.jpg" alt="活動風景" class="gallery-img">
+        <div class="gallery-overlay"></div>
+      </div>
+      <div class="gallery-card">
+        <img src="images/pic3.jpg" alt="活動風景" class="gallery-img">
+        <div class="gallery-overlay"></div>
+      </div>
+      <!-- clones for seamless loop -->
+      <div class="gallery-card" aria-hidden="true">
+        <img src="images/pic1.jpg" alt="" class="gallery-img">
+        <div class="gallery-overlay"></div>
+      </div>
+      <div class="gallery-card" aria-hidden="true">
+        <img src="images/pic2.jpg" alt="" class="gallery-img">
+        <div class="gallery-overlay"></div>
+      </div>
+      <div class="gallery-card" aria-hidden="true">
+        <img src="images/pic3.jpg" alt="" class="gallery-img">
+        <div class="gallery-overlay"></div>
+      </div>
+    </div>
+  </div>
+  <p class="gallery-notice">※ プライバシー配慮のため、一部加工しています。</p>
+</section>
+
+<div class="divider container"><span class="divider-icon">✦</span></div>
+
+<!-- ============================
+     06. 参加案内
+============================= -->
+<section id="join" class="section">
+  <div class="container">
+    <div class="section-header fade-up">
+      <div class="section-tag">✦ Join Us ✦</div>
+      <h2 class="section-title">参加案内</h2>
+    </div>
+    <div class="join-cards fade-up">
+      <div class="join-card">
+        <div class="join-card-num">01</div>
+        <h3 class="join-card-title">ディズニー好きなら誰でも歓迎</h3>
+        <p class="join-card-desc">映画派・パーク派・グッズ派など、好きなジャンルは問いません。</p>
+      </div>
+      <div class="join-card">
+        <div class="join-card-num">02</div>
+        <h3 class="join-card-title">兼サー・アルバイトと両立しやすい</h3>
+        <p class="join-card-desc">各企画は任意参加なので、自分の予定に合わせて参加できます。</p>
+      </div>
+      <div class="join-card">
+        <div class="join-card-num">03</div>
+        <h3 class="join-card-title">サークル費なし</h3>
+        <p class="join-card-desc">サークル費は徴収しておらず、企画ごとに必要な費用を集金します。</p>
+      </div>
+    </div>
+
+    <div class="join-cta fade-up">
+      <a href="#" class="btn btn-primary join-cta-btn">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+        問い合わせる
+      </a>
+    </div>
+
+    <div class="join-sns fade-up">
+      <a href="#" class="join-sns-link" aria-label="X (Twitter)">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+        X
+      </a>
+      <a href="#" class="join-sns-link" aria-label="Instagram">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+        Instagram
+      </a>
+      <a href="#" class="join-sns-link" aria-label="LINE">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 5.92 2 10.76c0 3.06 1.73 5.75 4.35 7.44-.19.68-.7 2.46-.8 2.85-.13.5.18.49.38.36.15-.1 2.4-1.63 3.37-2.29.55.08 1.12.12 1.7.12 5.52 0 10-3.92 10-8.76C22 5.92 17.52 2 12 2z"/></svg>
+        LINE
+      </a>
+      <a href="#" class="join-sns-link" aria-label="メール">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><polyline points="2,4 12,13 22,4"/></svg>
+        Email
+      </a>
+    </div>
+  </div>
+</section>
 
 <!-- Footer -->
 <footer class="footer">
   <div class="footer-container">
     <div class="footer-top">
       <div>
-        <div class="footer-brand-name">Disney Magic Events</div>
-        <p class="footer-brand-desc">東京ディズニーリゾートの年間イベント情報を、わかりやすくお届けするファンサイトです。</p>
+        <div class="footer-brand-name">Disney Circle Mouse</div>
+        <p class="footer-brand-desc">一橋・津田塾ディズニー同好会マウスの活動紹介と、東京ディズニーリゾートのイベント情報をわかりやすくお届けする非公式ファンサイトです。</p>
       </div>
       <div>
         <div class="footer-col-title">イベント</div>
@@ -266,7 +382,7 @@
       </div>
     </div>
     <div class="footer-bottom">
-      <div class="footer-copyright">© 2026 Disney Magic Events Fan Site. All rights reserved.</div>
+      <div class="footer-copyright">© 2026 Disney Circle Mouse. All rights reserved.</div>
       <div class="footer-disclaimer">※ このサイトはファンが制作した非公式サイトです。公式情報は東京ディズニーリゾート公式サイトをご確認ください。</div>
     </div>
   </div>

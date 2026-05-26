@@ -433,13 +433,14 @@ document.addEventListener('DOMContentLoaded', () => {
   initScrollAnimations();
   initScrollTop();
   initSparkles();
+
+  // Subpage-specific inits (safely no-op when elements are absent)
   initCountdown();
   renderEvents();
   renderSweets();
   renderCalendar();
   initFilterTabs();
 
-  // Modal close handlers
   const overlay = document.getElementById('event-modal-overlay');
   if (overlay) {
     overlay.addEventListener('click', (e) => {
@@ -450,7 +451,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // Calendar nav
   const prevBtn = document.getElementById('cal-prev');
   const nextBtn = document.getElementById('cal-next');
   if (prevBtn) prevBtn.addEventListener('click', prevMonth);
