@@ -1286,7 +1286,6 @@ body {
 .timeline-item:hover .timeline-content {
   color: #fff;
   text-shadow: 0 0 12px rgba(200,169,81,0.35);
-}
   padding-bottom: 20px;
 }
 
