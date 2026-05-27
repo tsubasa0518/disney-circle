@@ -265,15 +265,24 @@ body {
 }
 
 .hero-buttons {
-  display: flex;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
   gap: 16px;
+  max-width: 520px;
+  margin: 0 auto;
+}
+
+.hero-buttons .btn {
+  width: 100%;
   justify-content: center;
-  flex-wrap: wrap;
 }
 
 /* ===== Smooth-scroll anchor offsets ===== */
 #about,
-#schedule {
+#features,
+#schedule,
+#activities,
+#howtojoin {
   scroll-margin-top: 100px;
 }
 
@@ -1431,6 +1440,10 @@ body {
   line-height: 1.8;
 }
 
+.join-steps {
+  grid-template-columns: repeat(4, 1fr);
+}
+
 .join-cta {
   text-align: center;
   margin-bottom: 32px;
@@ -1511,24 +1524,29 @@ body {
   }
 }
 
+@media (max-width: 900px) {
+  .join-steps {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
 @media (max-width: 600px) {
   .hero-buttons {
-    flex-direction: column;
-    align-items: stretch;
-    gap: 12px;
-    width: 100%;
+    grid-template-columns: 1fr;
     max-width: 320px;
     margin: 0 auto;
+    gap: 12px;
   }
 
   .hero-buttons .btn {
-    width: 100%;
-    justify-content: center;
     padding: 14px 20px;
   }
 
   #about,
-  #schedule {
+  #features,
+  #schedule,
+  #activities,
+  #howtojoin {
     scroll-margin-top: 80px;
   }
 
@@ -1820,4 +1838,69 @@ body {
   .timeline-dot {
     transition: none;
   }
+}
+
+/* ===== LINE QR MODAL ===== */
+.line-qr-modal {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 3000;
+  align-items: center;
+  justify-content: center;
+}
+
+#line-qr-modal:target {
+  display: flex;
+}
+
+.line-qr-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.82);
+  backdrop-filter: blur(6px);
+}
+
+.line-qr-box {
+  position: relative;
+  z-index: 1;
+  background: #fff;
+  border-radius: 16px;
+  padding: 24px;
+  max-width: 300px;
+  width: 90%;
+  text-align: center;
+}
+
+.line-qr-box img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 8px;
+}
+
+.line-qr-close {
+  position: absolute;
+  top: -14px;
+  right: -14px;
+  width: 32px;
+  height: 32px;
+  background: var(--disney-navy);
+  border: 2px solid var(--disney-gold);
+  border-radius: 50%;
+  color: var(--disney-gold);
+  font-size: 18px;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  font-weight: 700;
+}
+
+.line-qr-caption {
+  margin-top: 14px;
+  font-size: 13px;
+  color: #001e4d;
+  font-weight: 600;
 }
