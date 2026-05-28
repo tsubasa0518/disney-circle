@@ -142,28 +142,6 @@ function createStars() {
   }
 }
 
-// ===== CASTLE SVG =====
-function renderCastle() {
-  const el = document.querySelector('.castle-silhouette');
-  if (!el) return;
-  el.innerHTML = `<svg viewBox="0 0 900 400" xmlns="http://www.w3.org/2000/svg" fill="white">
-    <rect x="380" y="200" width="140" height="200" />
-    <rect x="320" y="240" width="80" height="160" />
-    <rect x="500" y="240" width="80" height="160" />
-    <rect x="240" y="280" width="80" height="120" />
-    <rect x="580" y="280" width="80" height="120" />
-    <polygon points="450,80 380,200 520,200" />
-    <polygon points="360,160 320,240 400,240" />
-    <polygon points="540,160 500,240 580,240" />
-    <polygon points="280,220 240,280 320,280" />
-    <polygon points="620,220 580,280 660,280" />
-    <rect x="0" y="380" width="900" height="20" />
-    <rect x="370" y="270" width="60" height="130" rx="30" ry="30" />
-    <rect x="400" y="130" width="4" height="60" />
-    <rect x="339" y="195" width="4" height="44" />
-    <rect x="559" y="195" width="4" height="44" />
-  </svg>`;
-}
 
 // ===== SCROLL ANIMATIONS =====
 function initScrollAnimations() {
@@ -440,7 +418,6 @@ function initFilterTabs() {
 // ===== INIT =====
 document.addEventListener('DOMContentLoaded', () => {
   createStars();
-  renderCastle();
   initNav();
   initScrollAnimations();
   initScrollTop();

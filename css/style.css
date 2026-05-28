@@ -213,15 +213,6 @@ body {
   background: radial-gradient(ellipse at 50% 60%, #0d2d6b 0%, #001e4d 40%, #000a1e 100%);
 }
 
-.castle-silhouette {
-  position: absolute;
-  bottom: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 100%;
-  max-width: 900px;
-  opacity: 0.15;
-}
 
 .hero-fireworks {
   position: absolute;
@@ -280,11 +271,20 @@ body {
 }
 
 .hero-tagline {
+  font-family: 'Cinzel', serif;
   font-size: clamp(14px, 1.8vw, 17px);
-  color: var(--disney-gold);
+  font-weight: 700;
+  line-height: 1.7;
   letter-spacing: 1.5px;
   margin-bottom: 16px;
-  line-height: 1.7;
+  text-transform: uppercase;
+  background: linear-gradient(135deg, #ffffff 0%, var(--disney-gold-light) 50%, #ffffff 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-shadow: none;
+  animation: shimmer 4s ease-in-out infinite;
+  background-size: 200% 100%;
 }
 
 .hero-description {
@@ -1862,11 +1862,6 @@ body {
   border-color: rgba(255,255,255,0.7);
 }
 
-/* Castle silhouette stays above slideshow */
-.castle-silhouette {
-  position: absolute;
-  z-index: 3;
-}
 
 /* Hero content above everything */
 .hero-content {
@@ -2158,19 +2153,61 @@ body {
   }
 }
 
-/* ===== HERO TEXT BLOCK — move up independently of buttons ===== */
-.hero-text {
-  transform: translateY(-52px);
+/* ===== HERO TOP BLOCK — dots first, message below ===== */
+.hero-top-block {
+  position: absolute;
+  top: 151px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: min(92vw, 1100px);
+  z-index: 5;
+  text-align: center;
+}
+
+.hero-top-block .slideshow-dots {
+  margin-bottom: 18px;
+}
+
+.hero-title-block {
+  position: static;
+  width: 100%;
+  pointer-events: none;
+}
+
+.hero-title-block .hero-badge {
+  margin: 0 0 18px 0;
+}
+
+.hero-title-block .hero-title {
+  margin-top: 0;
 }
 
 @media (max-width: 900px) {
-  .hero-text {
-    transform: translateY(-36px);
+  .hero-top-block {
+    top: 128px;
+    width: min(94vw, 760px);
+  }
+
+  .hero-top-block .slideshow-dots {
+    margin-bottom: 14px;
+  }
+
+  .hero-title-block .hero-badge {
+    margin-bottom: 14px;
   }
 }
 
 @media (max-width: 600px) {
-  .hero-text {
-    transform: translateY(-24px);
+  .hero-top-block {
+    top: 112px;
+    width: min(94vw, 420px);
+  }
+
+  .hero-top-block .slideshow-dots {
+    margin-bottom: 12px;
+  }
+
+  .hero-title-block .hero-badge {
+    margin-bottom: 12px;
   }
 }
