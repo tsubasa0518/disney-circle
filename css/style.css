@@ -2157,3 +2157,20 @@ body {
     padding: 20px 20px 28px;
   }
 }
+
+/* ===== HERO TEXT BLOCK — move up independently of buttons ===== */
+.hero-text {
+  transform: translateY(-52px);
+}
+
+@media (max-width: 900px) {
+  .hero-text {
+    transform: translateY(-36px);
+  }
+}
+
+@media (max-width: 600px) {
+  .hero-text {
+    transform: translateY(-24px);
+  }
+}
