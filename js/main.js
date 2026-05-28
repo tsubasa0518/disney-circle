@@ -1,15 +1,15 @@
 // Disney Event Site - Main JS
 
-// ===== GALLERY ITEMS =====
-// 画像を差し替える場合は image の src を変更してください
-const galleryItems = [
-  { image: 'images/pic1.jpg', label: 'Park Visit',   title: '新歓インパ' },
-  { image: 'images/pic2.jpg', label: 'Quiz Night',   title: 'クイズ会' },
-  { image: 'images/pic3.jpg', label: 'Movie Night',  title: '映画鑑賞会' },
-  { image: 'images/pic1.jpg', label: 'Halloween',    title: 'ハロウィーンインパ' },
-  { image: 'images/pic2.jpg', label: 'Yukata Park',  title: '浴衣インパ' },
-  { image: 'images/pic3.jpg', label: 'Dinner',       title: 'ご飯会' },
-  { image: 'images/pic1.jpg', label: 'Festival',     title: '一橋祭出店' },
+// ===== ACTIVITY ITEMS =====
+// 活動写真を追加する場合は activityItems 配列にオブジェクトを追加してください
+const activityItems = [
+  { image: 'images/Activity_pic1.png', title: '新歓インパ',           english: 'Welcome Disney Trip', desc: '新入生を迎えてのディズニーへのインパ企画です。新しい仲間と一緒にディズニーを楽しもう！' },
+  { image: 'images/Activity_pic2.png', title: 'ディズニー映画鑑賞会', english: 'watching movies',     desc: 'ディズニー・ピクサー名作映画を一緒に鑑賞する企画です。映画談義でも盛り上がります。' },
+  { image: 'images/Activity_pic3.png', title: '一橋祭出店',           english: 'Festival',            desc: '一橋大学の学園祭に出店します。ディズニーにちなんだ企画でお客様をもてなします。' },
+  { image: 'images/Activity_pic4.png', title: '食事会',               english: 'Lunch / Dinner',      desc: 'メンバーでわいわいご飯を食べながら交流する企画です。気軽に参加できます。' },
+  { image: 'images/Activity_pic5.png', title: '浴衣インパ',           english: 'Yukata Disney',       desc: '夏の浴衣姿でディズニーへ！夏ならではの特別な体験をみんなで楽しみます。' },
+  { image: 'images/Activity_pic6.png', title: 'Dハロ',                english: 'Disney Halloween',    desc: 'ディズニーハロウィーンのコスチュームデーに参加！仮装してパークを楽しもう。' },
+  { image: 'images/Activity_pic7.png', title: 'クリスマス',           english: 'Christmas Party',     desc: 'クリスマスシーズンのディズニーをみんなで楽しむ企画です。イルミネーションが輝く夜のパークへ。' },
 ];
 
 const EVENTS = [
@@ -445,7 +445,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initScrollAnimations();
   initScrollTop();
   initSparkles();
-  initGallery();
+  initActivityCarousel();
 
   // Subpage-specific inits (safely no-op when elements are absent)
   initCountdown();
@@ -472,26 +472,131 @@ document.addEventListener('DOMContentLoaded', () => {
   initSlideshow();
 });
 
-// ===== GALLERY =====
-function initGallery() {
-  const track = document.getElementById('gallery-track');
+// ===== ACTIVITY CAROUSEL =====
+function initActivityCarousel() {
+  const track = document.getElementById('activity-track');
   if (!track) return;
+  const wrap = document.querySelector('.activity-carousel-wrap');
+  const dialog = document.getElementById('activity-dialog');
 
-  function makeCard(item, hidden) {
-    return `<div class="gallery-card"${hidden ? ' aria-hidden="true"' : ''}>
-      <img src="${item.image}" alt="${hidden ? '' : item.title}" class="gallery-img">
-      <div class="gallery-overlay"></div>
-      <div class="gallery-caption">
-        <span class="gallery-label">${item.label}</span>
-        <span class="gallery-title">${item.title}</span>
-      </div>
-    </div>`;
+  function cardHTML(item, index, hidden) {
+    const ah = hidden ? 'aria-hidden="true"' : '';
+    const ti = hidden ? '-1' : '0';
+    return `<div class="activity-card" data-index="${index}" role="listitem" tabindex="${ti}" ${ah}>`
+      + `<img src="${item.image}" alt="${hidden ? '' : item.title}" class="activity-card-img" draggable="false">`
+      + `<div class="activity-card-overlay"></div>`
+      + `<div class="activity-card-caption">`
+      + `<span class="activity-card-en">${item.english}</span>`
+      + `<span class="activity-card-title">${item.title}</span>`
+      + `</div></div>`;
   }
 
-  // original + clones for seamless CSS loop
   track.innerHTML =
-    galleryItems.map(item => makeCard(item, false)).join('') +
-    galleryItems.map(item => makeCard(item, true)).join('');
+    activityItems.map((item, i) => cardHTML(item, i, false)).join('') +
+    activityItems.map((item, i) => cardHTML(item, i, true)).join('');
+
+  // --- scroll state ---
+  let scrollPos = 0;
+  let isDragging = false;
+  let didDrag = false;
+  let dragStartX = 0;
+  let dragStartScroll = 0;
+  const DRAG_THRESHOLD = 5;
+  const SPEED = 0.4; // px per RAF frame (~24 px/s at 60 fps)
+
+  function getSetWidth() {
+    const cs = getComputedStyle(document.documentElement);
+    const cardW = parseFloat(cs.getPropertyValue('--activity-card-width')) || 300;
+    const gap   = parseFloat(cs.getPropertyValue('--activity-carousel-gap')) || 20;
+    return activityItems.length * (cardW + gap);
+  }
+
+  const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  function tick() {
+    if (!isDragging) {
+      scrollPos += SPEED;
+      const setW = getSetWidth();
+      if (scrollPos >= setW) scrollPos -= setW;
+      track.style.transform = `translateX(${-scrollPos}px)`;
+    }
+    requestAnimationFrame(tick);
+  }
+
+  if (!prefersReduced) requestAnimationFrame(tick);
+
+  // --- pointer drag / swipe ---
+  if (wrap) {
+    wrap.addEventListener('pointerdown', (e) => {
+      isDragging    = true;
+      didDrag       = false;
+      dragStartX    = e.clientX;
+      dragStartScroll = scrollPos;
+      try { wrap.setPointerCapture(e.pointerId); } catch (_) {}
+      wrap.style.cursor = 'grabbing';
+    });
+
+    wrap.addEventListener('pointermove', (e) => {
+      if (!isDragging) return;
+      const dx = dragStartX - e.clientX;
+      if (Math.abs(dx) > DRAG_THRESHOLD) {
+        didDrag = true;
+        const setW = getSetWidth();
+        scrollPos = ((dragStartScroll + dx) % setW + setW) % setW;
+        track.style.transform = `translateX(${-scrollPos}px)`;
+      }
+    });
+
+    const endDrag = () => {
+      if (!isDragging) return;
+      isDragging = false;
+      wrap.style.cursor = '';
+      // reset after click fires so click handler can inspect didDrag
+      setTimeout(() => { didDrag = false; }, 10);
+    };
+
+    ['pointerup', 'pointercancel', 'mouseleave'].forEach(ev =>
+      wrap.addEventListener(ev, endDrag));
+  }
+
+  // --- card click / keyboard ---
+  track.addEventListener('click', (e) => {
+    if (didDrag) return;
+    const card = e.target.closest('.activity-card[data-index]');
+    if (!card || card.getAttribute('aria-hidden') === 'true') return;
+    const idx = parseInt(card.dataset.index, 10);
+    if (Number.isFinite(idx) && activityItems[idx]) openActivityModal(activityItems[idx]);
+  });
+
+  track.addEventListener('keydown', (e) => {
+    if (e.key !== 'Enter' && e.key !== ' ') return;
+    const card = e.target.closest('.activity-card[data-index]');
+    if (!card || card.getAttribute('aria-hidden') === 'true') return;
+    e.preventDefault();
+    const idx = parseInt(card.dataset.index, 10);
+    if (Number.isFinite(idx) && activityItems[idx]) openActivityModal(activityItems[idx]);
+  });
+
+  // --- dialog ---
+  function openActivityModal(item) {
+    if (!dialog) return;
+    dialog.querySelector('.activity-dialog-img').src   = item.image;
+    dialog.querySelector('.activity-dialog-img').alt   = item.title;
+    dialog.querySelector('.activity-dialog-en').textContent    = item.english;
+    dialog.querySelector('.activity-dialog-title').textContent = item.title;
+    dialog.querySelector('.activity-dialog-desc').textContent  = item.desc || '';
+    const savedY = window.scrollY;
+    dialog.showModal();
+    window.scrollTo(0, savedY);
+    document.body.style.overflow = 'hidden';
+  }
+
+  if (dialog) {
+    const closeBtn = dialog.querySelector('.activity-dialog-close');
+    if (closeBtn) closeBtn.addEventListener('click', () => dialog.close());
+    dialog.addEventListener('click', (e) => { if (e.target === dialog) dialog.close(); });
+    dialog.addEventListener('close', () => { document.body.style.overflow = ''; });
+  }
 }
 
 // ===== SLIDESHOW =====
