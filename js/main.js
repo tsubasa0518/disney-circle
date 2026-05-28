@@ -7,8 +7,8 @@ const activityItems = [
   { image: 'images/Activity_pic2.png', title: 'ディズニー映画鑑賞会', english: 'watching movies',     desc: 'ディズニー・ピクサー名作映画を一緒に鑑賞する企画です。映画談義でも盛り上がります。' },
   { image: 'images/Activity_pic3.png', title: '一橋祭出店',           english: 'Festival',            desc: '一橋大学の学園祭に出店します。ディズニーにちなんだ企画でお客様をもてなします。' },
   { image: 'images/Activity_pic4.png', title: '食事会',               english: 'Lunch / Dinner',      desc: 'メンバーでわいわいご飯を食べながら交流する企画です。気軽に参加できます。' },
-  { image: 'images/Activity_pic5.png', title: '浴衣インパ',           english: 'Yukata Disney',       desc: '夏の浴衣姿でディズニーへ！夏ならではの特別な体験をみんなで楽しみます。' },
-  { image: 'images/Activity_pic6.png', title: 'Dハロ',                english: 'Disney Halloween',    desc: 'ディズニーハロウィーンのコスチュームデーに参加！仮装してパークを楽しもう。' },
+  { image: 'images/Activity_pic6.png', title: '浴衣インパ',           english: 'Yukata Disney',       desc: '夏の浴衣姿でディズニーへ！夏ならではの特別な体験をみんなで楽しみます。' },
+  { image: 'images/Activity_pic5.png', title: 'Dハロ',                english: 'Disney Halloween',    desc: 'ディズニーハロウィーンのコスチュームデーに参加！仮装してパークを楽しもう。' },
   { image: 'images/Activity_pic7.png', title: 'クリスマス',           english: 'Christmas Party',     desc: 'クリスマスシーズンのディズニーをみんなで楽しむ企画です。イルミネーションが輝く夜のパークへ。' },
 ];
 
