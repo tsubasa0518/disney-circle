@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>最新情報 | Disney Circle Mouse</title>
+  <meta name="description" content="一橋・津田塾ディズニー同好会マウスの最新情報をお届けします。" />
+  <link rel="stylesheet" href="css/style.css" />
+  <style>
+    /* ===== NEWS PAGE ===== */
+    .news-main {
+      min-height: calc(100vh - 72px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 120px 24px 80px;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* Container reserved for future news content */
+    .news-content {
+      max-width: 720px;
+      width: 100%;
+    }
+
+    .news-wip {
+      font-family: 'Cinzel', serif;
+      font-size: clamp(28px, 6vw, 48px);
+      letter-spacing: 4px;
+      background: linear-gradient(135deg, #fff, var(--disney-gold-light));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+  </style>
+</head>
+<body>
+
+<div class="stars-bg"></div>
+
+<!-- Navigation -->
+<nav class="navbar">
+  <div class="nav-container">
+    <a href="index.html" class="nav-logo">
+      <svg class="nav-logo-icon" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="24" cy="24" r="12" fill="#c8a951" opacity="0.9"/>
+        <circle cx="12" cy="13" r="7" fill="#c8a951" opacity="0.8"/>
+        <circle cx="36" cy="13" r="7" fill="#c8a951" opacity="0.8"/>
+        <circle cx="24" cy="24" r="8" fill="#001e4d"/>
+        <path d="M20 22 Q24 18 28 22 Q26 28 24 30 Q22 28 20 22Z" fill="#c8a951" opacity="0.6"/>
+      </svg>
+      <div>
+        <div class="nav-logo-text">Disney Circle Mouse</div>
+        <div class="nav-logo-sub">一橋・津田塾ディズニー同好会</div>
+      </div>
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html">ホーム</a></li>
+      <li><a href="events.html">イベント情報</a></li>
+      <li><a href="news.html" class="active">最新情報</a></li>
+      <li><a href="faq.html">Q＆A</a></li>
+      <li><a href="ticket.html" class="nav-cta btn">チケット情報</a></li>
+    </ul>
+    <div class="hamburger" aria-label="メニュー"><span></span><span></span><span></span></div>
+  </div>
+</nav>
+
+<!-- Main: centered placeholder (future news content goes inside .news-content) -->
+<main class="news-main">
+  <div class="news-content">
+    <p class="news-wip">作成中・・・</p>
+  </div>
+</main>
+
+<!-- Footer -->
+<footer class="footer">
+  <div class="footer-container">
+    <div class="footer-top">
+      <div>
+        <div class="footer-brand-name">Disney Circle Mouse</div>
+        <p class="footer-brand-desc">一橋・津田塾ディズニー同好会マウスの活動紹介と<br>東京ディズニーリゾート関連のイベント情報を<br>わかりやすくお届けする非公式ファンサイトです。</p>
+      </div>
+      <div>
+        <div class="footer-col-title">イベント</div>
+        <ul class="footer-links">
+          <li><a href="events.html">イベント一覧</a></li>
+          <li><a href="sweets.html">スイーツ情報</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-title">サイト開発者</div>
+        <ul class="footer-links">
+          <li><a href="developer.html">Developer 1</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-title">情報</div>
+        <ul class="footer-links">
+          <li><a href="#">アクセス</a></li>
+          <li><a href="ticket.html">チケット</a></li>
+          <li><a href="faq.html">よくある質問</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-copyright">© 2026 Disney Circle Mouse. All rights reserved.</div>
+      <div class="footer-disclaimer">※ このサイトはファンが制作した非公式サイトです。公式情報は東京ディズニーリゾート公式サイトをご確認ください。</div>
+    </div>
+  </div>
+</footer>
+
+<button class="scroll-top" aria-label="ページトップへ">↑</button>
+
+<script src="js/main.js"></script>
+</body>
+</html>

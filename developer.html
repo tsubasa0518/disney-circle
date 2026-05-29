@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>サイト開発者 | Disney Circle Mouse</title>
+  <meta name="description" content="一橋・津田塾ディズニー同好会マウス公式ファンサイトの開発者紹介ページです。" />
+  <link rel="stylesheet" href="css/style.css" />
+  <style>
+    /* ===== DEVELOPER PAGE ===== */
+    .dev-wrap {
+      max-width: 760px;
+      margin: 0 auto;
+    }
+
+    /* Profile card */
+    .dev-profile {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(200,169,81,0.25);
+      border-radius: 24px;
+      padding: 40px 36px;
+      margin-bottom: 48px;
+      text-align: center;
+    }
+
+    .dev-avatar {
+      width: 88px;
+      height: 88px;
+      border-radius: 50%;
+      margin: 0 auto 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--gradient-gold);
+      box-shadow: 0 8px 30px rgba(200,169,81,0.35);
+    }
+
+    .dev-avatar svg {
+      width: 44px;
+      height: 44px;
+    }
+
+    .dev-name {
+      font-family: 'Cinzel', serif;
+      font-size: 28px;
+      color: #fff;
+      margin-bottom: 6px;
+    }
+
+    .dev-role {
+      font-size: 13px;
+      letter-spacing: 2px;
+      color: var(--disney-gold);
+      text-transform: uppercase;
+      margin-bottom: 28px;
+    }
+
+    .dev-info-list {
+      max-width: 460px;
+      margin: 0 auto 28px;
+      text-align: left;
+    }
+
+    .dev-info-item {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding: 14px 0;
+      border-top: 1px solid rgba(200,169,81,0.18);
+    }
+
+    .dev-info-item:last-child {
+      border-bottom: 1px solid rgba(200,169,81,0.18);
+    }
+
+    .dev-info-icon {
+      flex-shrink: 0;
+      width: 20px;
+      height: 20px;
+      color: var(--disney-gold);
+    }
+
+    .dev-info-label {
+      flex: 0 0 64px;
+      font-size: 12px;
+      letter-spacing: 1px;
+      color: var(--disney-gold);
+    }
+
+    .dev-info-value {
+      color: rgba(255,255,255,0.9);
+      font-size: 15px;
+    }
+
+    .dev-sns-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 12px 26px;
+      border-radius: 40px;
+      background: rgba(0,119,181,0.15);
+      border: 1px solid rgba(0,119,181,0.55);
+      color: #6cb7e8;
+      font-size: 14px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.3s ease;
+    }
+
+    .dev-sns-btn:hover {
+      background: rgba(0,119,181,0.28);
+      border-color: #0a66c2;
+      color: #9ccef0;
+      transform: translateY(-2px);
+    }
+
+    .dev-sns-btn svg {
+      width: 18px;
+      height: 18px;
+      flex-shrink: 0;
+    }
+
+    .dev-sns-ext {
+      font-size: 11px;
+      opacity: 0.75;
+    }
+
+    /* Career timeline */
+    .dev-section-head {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      margin-bottom: 36px;
+    }
+
+    .dev-section-head svg {
+      width: 22px;
+      height: 22px;
+      color: var(--disney-gold);
+    }
+
+    .dev-section-head h2 {
+      font-family: 'Cinzel', serif;
+      font-size: clamp(20px, 4vw, 28px);
+      background: linear-gradient(135deg, #fff, var(--disney-gold-light));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .dev-career {
+      position: relative;
+      max-width: 520px;
+      margin: 0 auto;
+      padding-left: 8px;
+    }
+
+    .dev-career-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 18px;
+      padding: 0 0 24px 0;
+      position: relative;
+    }
+
+    .dev-career-item::before {
+      content: '';
+      position: absolute;
+      left: 13px;
+      top: 30px;
+      bottom: -4px;
+      width: 2px;
+      background: linear-gradient(to bottom, rgba(200,169,81,0.4), rgba(200,169,81,0.1));
+    }
+
+    .dev-career-item:last-child {
+      padding-bottom: 0;
+    }
+
+    .dev-career-item:last-child::before {
+      display: none;
+    }
+
+    .dev-marker {
+      flex-shrink: 0;
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 15px;
+      font-weight: 700;
+      z-index: 1;
+    }
+
+    .dev-marker.step {
+      background: rgba(200,169,81,0.15);
+      border: 1px solid rgba(200,169,81,0.5);
+      color: var(--disney-gold-light);
+    }
+
+    .dev-marker.plus {
+      background: var(--gradient-gold);
+      color: var(--disney-navy);
+    }
+
+    .dev-career-card {
+      flex: 1;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 14px;
+      padding: 12px 18px;
+      transition: all 0.3s ease;
+    }
+
+    .dev-career-card:hover {
+      border-color: rgba(200,169,81,0.4);
+      background: rgba(200,169,81,0.06);
+    }
+
+    .dev-career-place {
+      font-size: 15px;
+      font-weight: 700;
+      color: #fff;
+    }
+
+    .dev-career-detail {
+      font-size: 13px;
+      color: rgba(255,255,255,0.6);
+      margin-top: 3px;
+    }
+
+    @media (max-width: 600px) {
+      .dev-profile {
+        padding: 32px 22px;
+      }
+      .dev-career-card {
+        padding: 10px 14px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<div class="stars-bg"></div>
+
+<!-- Navigation -->
+<nav class="navbar">
+  <div class="nav-container">
+    <a href="index.html" class="nav-logo">
+      <svg class="nav-logo-icon" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="24" cy="24" r="12" fill="#c8a951" opacity="0.9"/>
+        <circle cx="12" cy="13" r="7" fill="#c8a951" opacity="0.8"/>
+        <circle cx="36" cy="13" r="7" fill="#c8a951" opacity="0.8"/>
+        <circle cx="24" cy="24" r="8" fill="#001e4d"/>
+        <path d="M20 22 Q24 18 28 22 Q26 28 24 30 Q22 28 20 22Z" fill="#c8a951" opacity="0.6"/>
+      </svg>
+      <div>
+        <div class="nav-logo-text">Disney Circle Mouse</div>
+        <div class="nav-logo-sub">一橋・津田塾ディズニー同好会</div>
+      </div>
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html">ホーム</a></li>
+      <li><a href="events.html">イベント情報</a></li>
+      <li><a href="news.html">最新情報</a></li>
+      <li><a href="faq.html">Q＆A</a></li>
+      <li><a href="ticket.html" class="nav-cta btn">チケット情報</a></li>
+    </ul>
+    <div class="hamburger" aria-label="メニュー"><span></span><span></span><span></span></div>
+  </div>
+</nav>
+
+<!-- Page Hero -->
+<section class="page-hero">
+  <div class="page-hero-title fade-up">サイト開発者</div>
+  <p class="page-hero-desc fade-up">このサイトを制作した開発者をご紹介します。</p>
+</section>
+
+<section class="section" style="padding-top:0">
+  <div class="dev-wrap">
+
+    <!-- Profile Card -->
+    <div class="dev-profile fade-up">
+      <div class="dev-avatar">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#001e4d" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M4 21v-1a8 8 0 0 1 16 0v1"/></svg>
+      </div>
+      <div class="dev-name">つばさ</div>
+      <div class="dev-role">Site Developer</div>
+
+      <div class="dev-info-list">
+        <div class="dev-info-item">
+          <svg class="dev-info-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+          <span class="dev-info-label">大学</span>
+          <span class="dev-info-value">慶應義塾大学 経済学部</span>
+        </div>
+        <div class="dev-info-item">
+          <svg class="dev-info-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 5L2 7"/></svg>
+          <span class="dev-info-label">SNS</span>
+          <span class="dev-info-value">LinkedIn</span>
+        </div>
+      </div>
+
+      <a class="dev-sns-btn" href="https://jp.linkedin.com/in/hisayoshitsubasa" target="_blank" rel="noopener noreferrer">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.13 1.45-2.13 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29zM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"/></svg>
+        LinkedIn プロフィール
+        <span class="dev-sns-ext">↗ 外部リンク</span>
+      </a>
+    </div>
+
+    <!-- Career -->
+    <div class="dev-section-head fade-up">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l2.4 7.4H22l-6 4.6 2.3 7.4-6.3-4.6L5.7 21l2.3-7.4-6-4.6h7.6z"/></svg>
+      <h2>経歴</h2>
+    </div>
+
+    <div class="dev-career fade-up">
+      <div class="dev-career-item">
+        <div class="dev-marker step">→</div>
+        <div class="dev-career-card">
+          <div class="dev-career-place">NEZ 🇳🇿</div>
+        </div>
+      </div>
+      <div class="dev-career-item">
+        <div class="dev-marker step">→</div>
+        <div class="dev-career-card">
+          <div class="dev-career-place">OGS</div>
+          <div class="dev-career-detail">J.H.S. and H.S</div>
+        </div>
+      </div>
+      <div class="dev-career-item">
+        <div class="dev-marker step">→</div>
+        <div class="dev-career-card">
+          <div class="dev-career-place">AUS 🇦🇺</div>
+        </div>
+      </div>
+      <div class="dev-career-item">
+        <div class="dev-marker step">→</div>
+        <div class="dev-career-card">
+          <div class="dev-career-place">UK 🇬🇧</div>
+        </div>
+      </div>
+      <div class="dev-career-item">
+        <div class="dev-marker step">→</div>
+        <div class="dev-career-card">
+          <div class="dev-career-place">KU</div>
+          <div class="dev-career-detail">Engineering, Computer Aided Design</div>
+        </div>
+      </div>
+      <div class="dev-career-item">
+        <div class="dev-marker plus">+</div>
+        <div class="dev-career-card">
+          <div class="dev-career-place">NID</div>
+          <div class="dev-career-detail">Systems Engineer</div>
+        </div>
+      </div>
+      <div class="dev-career-item">
+        <div class="dev-marker plus">+</div>
+        <div class="dev-career-card">
+          <div class="dev-career-place">慶應義塾大学</div>
+          <div class="dev-career-detail">Economics</div>
+        </div>
+      </div>
+      <div class="dev-career-item">
+        <div class="dev-marker plus">+</div>
+        <div class="dev-career-card">
+          <div class="dev-career-place">Keio AIC</div>
+          <div class="dev-career-detail">AI, Engineering</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="footer">
+  <div class="footer-container">
+    <div class="footer-top">
+      <div>
+        <div class="footer-brand-name">Disney Circle Mouse</div>
+        <p class="footer-brand-desc">一橋・津田塾ディズニー同好会マウスの活動紹介と<br>東京ディズニーリゾート関連のイベント情報を<br>わかりやすくお届けする非公式ファンサイトです。</p>
+      </div>
+      <div>
+        <div class="footer-col-title">イベント</div>
+        <ul class="footer-links">
+          <li><a href="events.html">イベント一覧</a></li>
+          <li><a href="sweets.html">スイーツ情報</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-title">サイト開発者</div>
+        <ul class="footer-links">
+          <li><a href="developer.html">Developer 1</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-title">情報</div>
+        <ul class="footer-links">
+          <li><a href="#">アクセス</a></li>
+          <li><a href="ticket.html">チケット</a></li>
+          <li><a href="faq.html">よくある質問</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-copyright">© 2026 Disney Circle Mouse. All rights reserved.</div>
+      <div class="footer-disclaimer">※ このサイトはファンが制作した非公式サイトです。公式情報は東京ディズニーリゾート公式サイトをご確認ください。</div>
+    </div>
+  </div>
+</footer>
+
+<button class="scroll-top" aria-label="ページトップへ">↑</button>
+
+<script src="js/main.js"></script>
+</body>
+</html>
