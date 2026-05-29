@@ -3,13 +3,13 @@
 // ===== ACTIVITY ITEMS =====
 // 活動写真を追加する場合は activityItems 配列にオブジェクトを追加してください
 const activityItems = [
-  { image: 'images/Activity_pic1.png', title: '新歓インパ',           english: 'Welcome Disney Trip', desc: '新入生を迎えてのディズニーへのインパ企画です。新しい仲間と一緒にディズニーを楽しもう！' },
-  { image: 'images/Activity_pic2.png', title: 'ディズニー映画鑑賞会', english: 'watching movies',     desc: 'ディズニー・ピクサー名作映画を一緒に鑑賞する企画です。映画談義でも盛り上がります。' },
-  { image: 'images/Activity_pic3.png', title: '一橋祭出店',           english: 'Festival',            desc: '一橋大学の学園祭に出店します。ディズニーにちなんだ企画でお客様をもてなします。' },
-  { image: 'images/Activity_pic4.png', title: '食事会',               english: 'Lunch / Dinner',      desc: 'メンバーでわいわいご飯を食べながら交流する企画です。気軽に参加できます。' },
-  { image: 'images/Activity_pic6.png', title: '浴衣インパ',           english: 'Yukata Disney',       desc: '夏の浴衣姿でディズニーへ！夏ならではの特別な体験をみんなで楽しみます。' },
-  { image: 'images/Activity_pic5.png', title: 'Dハロ',                english: 'Disney Halloween',    desc: 'ディズニーハロウィーンのコスチュームデーに参加！仮装してパークを楽しもう。' },
-  { image: 'images/Activity_pic7.png', title: 'クリスマス',           english: 'Christmas Party',     desc: 'クリスマスシーズンのディズニーをみんなで楽しむ企画です。イルミネーションが輝く夜のパークへ。' },
+  { image: 'images/Activity_pic1.png', title: '新歓インパ',           english: 'Welcome Disney Trip', desc: '新入生を迎えてのディズニーへのインパ企画です。' },
+  { image: 'images/Activity_pic2.png', title: 'ディズニー映画鑑賞会', english: 'watching movies',     desc: 'ディズニー・ピクサー名作映画を一緒に鑑賞する企画です。' },
+  { image: 'images/Activity_pic3.png', title: '一橋祭出店',           english: 'Festival',            desc: '一橋大学の学園祭に出店します。' },
+  { image: 'images/Activity_pic4.png', title: '食事会',               english: 'Lunch / Dinner',      desc: '' },
+  { image: 'images/Activity_pic6.png', title: '浴衣インパ',           english: 'Yukata Disney',       desc: '' },
+  { image: 'images/Activity_pic5.png', title: 'Dハロ',                english: 'Disney Halloween',    desc: '' },
+  { image: 'images/Activity_pic7.png', title: 'クリスマス',           english: 'Christmas Party',     desc: 'クリスマスシーズンのディズニーをみんなで楽しむ企画です。' },
 ];
 
 const EVENTS = [
@@ -543,7 +543,7 @@ function initActivityCarousel() {
       if (didDrag) return;
       const card = e.target.closest('.activity-card[data-index]') ?? pendingCard;
       pendingCard = null;
-      if (!card || card.getAttribute('aria-hidden') === 'true') return;
+      if (!card) return;
       const idx = parseInt(card.dataset.index, 10);
       if (Number.isFinite(idx) && activityItems[idx]) openActivityModal(activityItems[idx]);
     });
