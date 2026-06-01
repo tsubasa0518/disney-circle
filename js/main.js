@@ -167,6 +167,31 @@ function initScrollTop() {
   btn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
 }
 
+// ===== JOIN CTA: scroll to SNS + highlight =====
+function initJoinCta() {
+  const joinCtaButton = document.querySelector('.join-cta-btn');
+  const joinSns = document.querySelector('.join-sns');
+  const joinSnsLinks = document.querySelectorAll('.join-sns-link');
+  if (!joinCtaButton || !joinSns || joinSnsLinks.length === 0) return;
+
+  let highlightTimer = null;
+
+  joinCtaButton.addEventListener('click', (e) => {
+    e.preventDefault();
+    joinSns.scrollIntoView({ behavior: 'smooth', block: 'center' });
+
+    if (highlightTimer) {
+      clearTimeout(highlightTimer);
+      joinSnsLinks.forEach(link => link.classList.remove('sns-highlight'));
+    }
+    joinSnsLinks.forEach(link => link.classList.add('sns-highlight'));
+    highlightTimer = setTimeout(() => {
+      joinSnsLinks.forEach(link => link.classList.remove('sns-highlight'));
+      highlightTimer = null;
+    }, 1600);
+  });
+}
+
 // ===== NAV =====
 function initNav() {
   const hamburger = document.querySelector('.hamburger');
@@ -423,6 +448,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initScrollTop();
   initSparkles();
   initActivityCarousel();
+  initJoinCta();
 
   // Subpage-specific inits (safely no-op when elements are absent)
   initCountdown();
