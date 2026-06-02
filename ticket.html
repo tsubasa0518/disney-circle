@@ -4,224 +4,84 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>チケット情報 | Disney Circle Mouse</title>
-  <meta name="description" content="東京ディズニーリゾートのパークチケット販売スケジュール・購入方法・変更手続きについての詳細情報。" />
+  <meta name="description" content="東京ディズニーリゾートのパークチケットを確認・購入・変更できる公式ページへの案内。当サイトは非公式ファンサイトです。" />
   <link rel="stylesheet" href="css/style.css" />
   <style>
-    /* ===== PAGE LAYOUT ===== */
-    .ticket-layout {
-      max-width: 1100px;
+    /* ===== WRAP ===== */
+    .ticket-wrap {
+      max-width: 860px;
       margin: 0 auto;
-      display: grid;
-      grid-template-columns: 260px 1fr;
-      gap: 40px;
-      align-items: start;
+      padding: 0 24px;
     }
 
-    /* ===== SIDEBAR ===== */
-    .ticket-sidebar {
-      position: sticky;
-      top: 96px;
+    /* ===== MAIN CTA ===== */
+    .ticket-cta {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(200,169,81,0.3);
+      border-radius: 20px;
+      padding: 40px 36px;
+      text-align: center;
+      margin-bottom: 32px;
     }
 
-    .sidebar-card {
-      background: rgba(255,255,255,0.04);
-      border: 1px solid rgba(200,169,81,0.25);
-      border-radius: 16px;
-      overflow: hidden;
-    }
-
-    .sidebar-title {
-      padding: 16px 20px;
+    .ticket-cta-label {
       font-size: 11px;
       letter-spacing: 3px;
       color: var(--disney-gold);
       text-transform: uppercase;
-      border-bottom: 1px solid rgba(200,169,81,0.2);
-      background: rgba(200,169,81,0.06);
+      margin-bottom: 14px;
     }
 
-    .sidebar-nav {
-      list-style: none;
+    .ticket-cta-title {
+      font-family: 'Cinzel', serif;
+      font-size: 26px;
+      color: white;
+      margin-bottom: 18px;
+      line-height: 1.4;
     }
 
-    .sidebar-nav li a {
+    .ticket-cta-text {
+      font-size: 14px;
+      color: rgba(255,255,255,0.75);
+      line-height: 1.9;
+      max-width: 620px;
+      margin: 0 auto 28px;
+    }
+
+    .ticket-cta-buttons {
       display: flex;
-      align-items: center;
-      gap: 10px;
-      padding: 13px 20px;
-      font-size: 13px;
-      color: rgba(255,255,255,0.6);
-      text-decoration: none;
-      border-bottom: 1px solid rgba(255,255,255,0.05);
-      transition: all 0.2s ease;
+      flex-wrap: wrap;
+      gap: 14px;
+      justify-content: center;
     }
 
-    .sidebar-nav li a:hover,
-    .sidebar-nav li a.active {
-      color: var(--disney-gold-light);
-      background: rgba(200,169,81,0.08);
-      padding-left: 24px;
+    .ticket-cta-buttons .btn {
+      min-width: 200px;
+      justify-content: center;
     }
 
-    .sidebar-nav li:last-child a {
-      border-bottom: none;
-    }
-
-    .sidebar-nav-icon {
-      font-size: 14px;
-      flex-shrink: 0;
-    }
-
-    .sidebar-cta {
-      margin-top: 20px;
-      background: rgba(200,169,81,0.08);
-      border: 1px solid rgba(200,169,81,0.25);
-      border-radius: 16px;
-      padding: 24px 20px;
-      text-align: center;
-    }
-
-    .sidebar-cta-label {
-      font-size: 11px;
-      letter-spacing: 2px;
-      color: var(--disney-gold);
-      text-transform: uppercase;
-      margin-bottom: 8px;
-    }
-
-    .sidebar-cta-title {
-      font-size: 14px;
-      font-weight: 700;
-      margin-bottom: 16px;
-      line-height: 1.5;
-    }
-
-    /* ===== MAIN CONTENT ===== */
-    .ticket-main {
-      min-width: 0;
-    }
-
-    /* ===== SECTION CARDS ===== */
-    .ticket-section {
+    /* ===== SECTION CARD ===== */
+    .ticket-block {
       background: rgba(255,255,255,0.03);
       border: 1px solid rgba(255,255,255,0.08);
       border-radius: 20px;
-      overflow: hidden;
+      padding: 28px 32px;
       margin-bottom: 28px;
-      transition: border-color 0.3s ease;
     }
 
-    .ticket-section:hover {
-      border-color: rgba(200,169,81,0.25);
-    }
-
-    .ticket-section-header {
-      padding: 24px 32px 20px;
-      border-bottom: 1px solid rgba(255,255,255,0.06);
-      display: flex;
-      align-items: center;
-      gap: 14px;
-      background: rgba(200,169,81,0.04);
-    }
-
-    .ticket-section-icon {
-      font-size: 24px;
-      flex-shrink: 0;
-    }
-
-    .ticket-section-title {
+    .ticket-block-title {
       font-family: 'Cinzel', serif;
       font-size: 18px;
       color: white;
-    }
-
-    .ticket-section-body {
-      padding: 28px 32px;
-    }
-
-    /* ===== SUBSECTIONS ===== */
-    .ticket-subsection {
-      margin-bottom: 28px;
-    }
-
-    .ticket-subsection:last-child {
-      margin-bottom: 0;
-    }
-
-    .ticket-subsection-title {
-      font-size: 15px;
-      font-weight: 700;
-      color: var(--disney-gold-light);
-      margin-bottom: 12px;
+      margin-bottom: 18px;
       display: flex;
       align-items: center;
-      gap: 8px;
-    }
-
-    .ticket-subsection-title::before {
-      content: '';
-      display: inline-block;
-      width: 3px;
-      height: 16px;
-      background: var(--gradient-gold);
-      border-radius: 2px;
-      flex-shrink: 0;
-    }
-
-    .ticket-text {
-      font-size: 14px;
-      color: rgba(255,255,255,0.75);
-      line-height: 1.85;
-    }
-
-    .ticket-text + .ticket-text {
-      margin-top: 12px;
-    }
-
-    /* ===== HIGHLIGHT BOX ===== */
-    .highlight-box {
-      background: rgba(200,169,81,0.08);
-      border: 1px solid rgba(200,169,81,0.25);
-      border-radius: 12px;
-      padding: 18px 20px;
-      margin: 16px 0;
-    }
-
-    .highlight-box-label {
-      font-size: 11px;
-      letter-spacing: 2px;
-      color: var(--disney-gold);
-      text-transform: uppercase;
-      margin-bottom: 8px;
-    }
-
-    .highlight-box-text {
-      font-size: 14px;
-      color: rgba(255,255,255,0.8);
-      line-height: 1.75;
-    }
-
-    /* ===== WARNING BOX ===== */
-    .warning-box {
-      background: rgba(255,180,50,0.08);
-      border: 1px solid rgba(255,180,50,0.3);
-      border-radius: 12px;
-      padding: 16px 20px;
-      margin: 16px 0;
-      display: flex;
       gap: 12px;
     }
 
-    .warning-icon {
-      font-size: 18px;
+    .ticket-block-title .ticket-block-icon {
+      font-size: 22px;
       flex-shrink: 0;
-      line-height: 1.6;
-    }
-
-    .warning-text {
-      font-size: 13px;
-      color: rgba(255,220,100,0.9);
-      line-height: 1.75;
     }
 
     /* ===== NOTICE LIST ===== */
@@ -230,7 +90,6 @@
       display: flex;
       flex-direction: column;
       gap: 10px;
-      margin-top: 12px;
     }
 
     .notice-list li {
@@ -238,9 +97,9 @@
       align-items: flex-start;
       gap: 10px;
       font-size: 14px;
-      color: rgba(255,255,255,0.7);
-      line-height: 1.75;
-      padding: 12px 16px;
+      color: rgba(255,255,255,0.75);
+      line-height: 1.8;
+      padding: 13px 16px;
       background: rgba(255,255,255,0.03);
       border-radius: 10px;
       border-left: 3px solid rgba(200,169,81,0.4);
@@ -251,164 +110,68 @@
       color: var(--disney-gold);
       font-size: 10px;
       flex-shrink: 0;
-      margin-top: 5px;
+      margin-top: 6px;
     }
 
-    /* ===== CHANGE TABLE ===== */
-    .change-grid {
+    /* ===== DISCLAIMER ===== */
+    .ticket-disclaimer {
+      background: rgba(200,169,81,0.06);
+      border: 1px solid rgba(200,169,81,0.25);
+      border-radius: 12px;
+      padding: 18px 22px;
+      font-size: 13px;
+      color: rgba(255,220,150,0.9);
+      line-height: 1.85;
+      margin-bottom: 28px;
+    }
+
+    /* ===== OFFICIAL LINKS ===== */
+    .official-links {
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 16px;
-      margin-top: 16px;
     }
 
-    .change-col {
-      border-radius: 12px;
-      overflow: hidden;
-    }
-
-    .change-col-header {
-      padding: 12px 16px;
-      font-size: 13px;
-      font-weight: 700;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-
-    .change-col-header.ok {
-      background: rgba(46,196,100,0.15);
-      color: #5ee89a;
-      border-bottom: 1px solid rgba(46,196,100,0.2);
-    }
-
-    .change-col-header.ng {
-      background: rgba(239,68,68,0.15);
-      color: #f87171;
-      border-bottom: 1px solid rgba(239,68,68,0.2);
-    }
-
-    .change-col-body {
+    .official-link-card {
+      display: block;
       background: rgba(255,255,255,0.03);
-      padding: 4px 0;
+      border: 1px solid rgba(200,169,81,0.2);
+      border-radius: 14px;
+      padding: 20px 22px;
+      text-decoration: none;
+      transition: all 0.25s ease;
     }
 
-    .change-col.ok .change-col-body {
-      border: 1px solid rgba(46,196,100,0.15);
-      border-top: none;
-      border-radius: 0 0 12px 12px;
+    .official-link-card:hover {
+      border-color: var(--disney-gold);
+      background: rgba(200,169,81,0.08);
+      transform: translateY(-2px);
     }
 
-    .change-col.ng .change-col-body {
-      border: 1px solid rgba(239,68,68,0.15);
-      border-top: none;
-      border-radius: 0 0 12px 12px;
-    }
-
-    .change-item {
+    .official-link-name {
       display: flex;
-      align-items: center;
-      gap: 10px;
-      padding: 12px 16px;
-      font-size: 14px;
-      color: rgba(255,255,255,0.75);
-      border-bottom: 1px solid rgba(255,255,255,0.04);
-    }
-
-    .change-item:last-child {
-      border-bottom: none;
-    }
-
-    .change-col.ok .change-item::before {
-      content: '✓';
-      color: #5ee89a;
-      font-weight: 700;
-      flex-shrink: 0;
-    }
-
-    .change-col.ng .change-item::before {
-      content: '✕';
-      color: #f87171;
-      font-weight: 700;
-      flex-shrink: 0;
-    }
-
-    /* ===== NOTICE DETAIL LIST ===== */
-    .detail-list {
-      display: flex;
-      flex-direction: column;
-      gap: 0;
-      margin-top: 16px;
-      border: 1px solid rgba(255,255,255,0.08);
-      border-radius: 12px;
-      overflow: hidden;
-    }
-
-    .detail-item {
-      display: grid;
-      grid-template-columns: 160px 1fr;
-      border-bottom: 1px solid rgba(255,255,255,0.06);
-    }
-
-    .detail-item:last-child {
-      border-bottom: none;
-    }
-
-    .detail-label {
-      padding: 14px 16px;
-      font-size: 13px;
-      font-weight: 700;
-      color: var(--disney-gold-light);
-      background: rgba(200,169,81,0.07);
-      border-right: 1px solid rgba(200,169,81,0.15);
-      display: flex;
-      align-items: flex-start;
-    }
-
-    .detail-value {
-      padding: 14px 16px;
-      font-size: 13px;
-      color: rgba(255,255,255,0.7);
-      line-height: 1.75;
-    }
-
-    /* ===== EXTERNAL LINK ===== */
-    .ext-link {
-      display: inline-flex;
       align-items: center;
       gap: 8px;
+      font-size: 15px;
+      font-weight: 700;
       color: var(--disney-gold-light);
-      text-decoration: none;
-      font-size: 14px;
-      font-weight: 600;
-      padding: 10px 20px;
-      border: 1px solid rgba(200,169,81,0.4);
-      border-radius: 8px;
-      margin-top: 12px;
-      transition: all 0.2s ease;
-      background: rgba(200,169,81,0.06);
+      margin-bottom: 8px;
     }
 
-    .ext-link:hover {
-      background: rgba(200,169,81,0.15);
-      border-color: var(--disney-gold);
-      transform: translateX(2px);
-    }
-
-    .ext-link svg {
+    .official-link-name svg {
       width: 14px;
       height: 14px;
       opacity: 0.7;
+      flex-shrink: 0;
     }
 
-    /* ===== DIVIDER ===== */
-    .ticket-divider {
-      border: none;
-      border-top: 1px solid rgba(255,255,255,0.06);
-      margin: 24px 0;
+    .official-link-desc {
+      font-size: 13px;
+      color: rgba(255,255,255,0.6);
+      line-height: 1.7;
     }
 
-    /* ===== SOURCE LINK ===== */
+    /* ===== SOURCE NOTE ===== */
     .source-note {
       margin-top: 32px;
       padding: 16px 20px;
@@ -419,16 +182,8 @@
       align-items: center;
       gap: 10px;
       font-size: 12px;
-      color: rgba(255,255,255,0.35);
-    }
-
-    .source-note a {
-      color: rgba(200,169,81,0.7);
-      text-decoration: none;
-    }
-
-    .source-note a:hover {
-      color: var(--disney-gold-light);
+      color: rgba(255,255,255,0.4);
+      line-height: 1.7;
     }
 
     /* ===== BREADCRUMB ===== */
@@ -438,7 +193,7 @@
       gap: 8px;
       font-size: 13px;
       color: rgba(255,255,255,0.4);
-      margin-bottom: 32px;
+      margin-bottom: 28px;
     }
 
     .breadcrumb a {
@@ -451,45 +206,65 @@
       color: var(--disney-gold-light);
     }
 
-    .breadcrumb-sep {
-      opacity: 0.4;
+    .breadcrumb-sep { opacity: 0.4; }
+    .breadcrumb-current { color: var(--disney-gold); }
+
+    /* ===== MOBILE FIXED CTA ===== */
+    .mobile-fixed-cta {
+      display: none;
     }
 
-    .breadcrumb-current {
-      color: var(--disney-gold);
-    }
-
-    /* ===== RESPONSIVE ===== */
-    @media (max-width: 860px) {
-      .ticket-layout {
+    @media (max-width: 768px) {
+      .official-links {
         grid-template-columns: 1fr;
       }
 
-      .ticket-sidebar {
-        position: static;
+      .ticket-cta {
+        padding: 32px 22px;
       }
 
-      .change-grid {
-        grid-template-columns: 1fr;
+      .ticket-cta-title {
+        font-size: 22px;
       }
 
-      .detail-item {
-        grid-template-columns: 1fr;
+      .ticket-cta-buttons .btn {
+        width: 100%;
       }
 
-      .detail-label {
-        border-right: none;
-        border-bottom: 1px solid rgba(200,169,81,0.15);
-      }
-    }
-
-    @media (max-width: 600px) {
-      .ticket-section-body {
-        padding: 20px 18px;
+      .ticket-block {
+        padding: 24px 20px;
       }
 
-      .ticket-section-header {
-        padding: 18px 18px 16px;
+      /* Fixed bottom CTA on mobile only */
+      .mobile-fixed-cta {
+        display: flex;
+        position: fixed;
+        left: 12px;
+        right: 76px;
+        bottom: 16px;
+        z-index: 900;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        padding: 14px 18px;
+        font-size: 14px;
+        font-weight: 700;
+        text-decoration: none;
+        color: #001e4d;
+        background: var(--gradient-gold, linear-gradient(135deg, #c8a951, #e6c97a));
+        border-radius: 14px;
+        box-shadow: 0 6px 20px rgba(0,0,0,0.4);
+      }
+
+      .mobile-fixed-cta svg {
+        width: 16px;
+        height: 16px;
+        flex-shrink: 0;
+      }
+
+      /* keep page content above fixed CTA */
+      .footer {
+        padding-bottom: 90px;
       }
     }
   </style>
@@ -528,12 +303,12 @@
 <!-- Page Hero -->
 <section class="page-hero">
   <div class="page-hero-title fade-up">🎫 チケット情報</div>
-  <p class="page-hero-desc fade-up">パークチケットの販売スケジュール・購入方法・変更手続きについてご案内します。</p>
+  <p class="page-hero-desc fade-up">東京ディズニーリゾートのパークチケットを確認・購入・変更できる公式ページへご案内します。</p>
 </section>
 
 <!-- Main Content -->
 <section class="section" style="padding-top: 0;">
-  <div style="max-width:1100px;margin:0 auto;padding:0 24px;">
+  <div class="ticket-wrap">
 
     <!-- Breadcrumb -->
     <nav class="breadcrumb fade-up">
@@ -542,213 +317,85 @@
       <span class="breadcrumb-current">チケット情報</span>
     </nav>
 
-    <div class="ticket-layout">
-
-      <!-- Sidebar -->
-      <aside class="ticket-sidebar">
-        <div class="sidebar-card fade-up">
-          <div class="sidebar-title">目次</div>
-          <ul class="sidebar-nav">
-            <li><a href="#schedule" class="active">
-              <span class="sidebar-nav-icon">📅</span>販売スケジュール
-            </a></li>
-            <li><a href="#quantity">
-              <span class="sidebar-nav-icon">🎟</span>購入可能枚数
-            </a></li>
-            <li><a href="#types">
-              <span class="sidebar-nav-icon">🗂</span>券種について
-            </a></li>
-            <li><a href="#after">
-              <span class="sidebar-nav-icon">📋</span>購入後について
-            </a></li>
-            <li><a href="#cancel">
-              <span class="sidebar-nav-icon">❌</span>キャンセル・払い戻し
-            </a></li>
-            <li><a href="#change">
-              <span class="sidebar-nav-icon">✏️</span>変更手続き
-            </a></li>
-          </ul>
-        </div>
-
-        <div class="sidebar-cta fade-up" style="margin-top:20px;">
-          <div class="sidebar-cta-label">公式サイト</div>
-          <div class="sidebar-cta-title">東京ディズニーリゾート<br>公式チケット購入</div>
-          <a href="https://www.tokyodisneyresort.jp/ticket/index.html" target="_blank" rel="noopener noreferrer" class="btn btn-primary" style="width:100%;justify-content:center;font-size:13px;">
-            公式サイトへ →
-          </a>
-        </div>
-      </aside>
-
-      <!-- Main -->
-      <main class="ticket-main">
-
-        <!-- 1. 販売スケジュール -->
-        <div class="ticket-section fade-up" id="schedule">
-          <div class="ticket-section-header">
-            <span class="ticket-section-icon">📅</span>
-            <h2 class="ticket-section-title">パークチケットの販売スケジュール</h2>
-          </div>
-          <div class="ticket-section-body">
-
-            <div class="ticket-subsection">
-              <h3 class="ticket-subsection-title">販売開始日時</h3>
-              <div class="highlight-box">
-                <div class="highlight-box-label">販売開始タイミング</div>
-                <p class="highlight-box-text">
-                  ご来園日の<strong style="color:var(--disney-gold-light)">2カ月前の同日 14:00</strong>より販売を開始いたします。
-                </p>
-              </div>
-
-              <div class="warning-box">
-                <span class="warning-icon">⚠️</span>
-                <div class="warning-text">
-                  <strong>【同日がない場合のご注意】</strong><br>
-                  2カ月前に同日がない場合（例：来園日が10月31日で、2ヶ月前の8月に31日が存在しない等）は、翌月1日の14:00からの販売となります。
-                </div>
-              </div>
-            </div>
-
-            <hr class="ticket-divider">
-
-            <div class="ticket-subsection">
-              <h3 class="ticket-subsection-title">販売に関するご注意事項</h3>
-              <ul class="notice-list">
-                <li>1日あたりのチケット販売枚数が一定数に達した場合、予告なく販売を停止することがあります。</li>
-                <li>売り切れとなったチケットも、予告なく再販売となる場合があります。</li>
-                <li>ご購入手続き中にエラーが発生した際は、カートからお手続き中の商品が削除されていることがあります。その場合は、商品選択から手続きをやり直してください。</li>
-              </ul>
-            </div>
-
-          </div>
-        </div>
-
-        <!-- 2. 購入可能枚数 -->
-        <div class="ticket-section fade-up" id="quantity">
-          <div class="ticket-section-header">
-            <span class="ticket-section-icon">🎟</span>
-            <h2 class="ticket-section-title">パークチケットのご購入可能枚数</h2>
-          </div>
-          <div class="ticket-section-body">
-            <div class="highlight-box">
-              <div class="highlight-box-label">1回あたりの上限</div>
-              <p class="highlight-box-text" style="font-size:16px;">
-                1回のお申し込みにつき、<strong style="color:var(--disney-gold-light);font-size:20px;">最大10枚</strong>までご購入いただけます。
-              </p>
-            </div>
-            <p class="ticket-text" style="margin-top:12px;">
-              11枚以上お求めの場合は、大変お手数ですが複数回に分けてご購入手続きをお願いいたします。
-            </p>
-          </div>
-        </div>
-
-        <!-- 3. 券種 -->
-        <div class="ticket-section fade-up" id="types">
-          <div class="ticket-section-header">
-            <span class="ticket-section-icon">🗂</span>
-            <h2 class="ticket-section-title">パークチケットの券種</h2>
-          </div>
-          <div class="ticket-section-body">
-            <p class="ticket-text">
-              現在販売中のパークチケットの一覧および詳細は、専用ページよりご確認ください。
-            </p>
-            <a href="https://www.tokyodisneyresort.jp/ticket/index.html" target="_blank" rel="noopener noreferrer" class="ext-link">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-              パークチケット一覧はこちら
-            </a>
-          </div>
-        </div>
-
-        <!-- 4. 購入後について -->
-        <div class="ticket-section fade-up" id="after">
-          <div class="ticket-section-header">
-            <span class="ticket-section-icon">📋</span>
-            <h2 class="ticket-section-title">ご購入後のパークチケットについて</h2>
-          </div>
-          <div class="ticket-section-body">
-
-            <!-- キャンセル -->
-            <div class="ticket-subsection" id="cancel">
-              <h3 class="ticket-subsection-title">キャンセル・払い戻しについて</h3>
-              <div class="warning-box">
-                <span class="warning-icon">❌</span>
-                <div class="warning-text">
-                  ご購入後のお客様都合によるキャンセル、払い戻しはお受けできません。<br>
-                  また、有償・無償を問わず、チケットを他人に譲渡することは禁止されております。
-                </div>
-              </div>
-            </div>
-
-            <hr class="ticket-divider">
-
-            <!-- 変更手続き -->
-            <div class="ticket-subsection" id="change">
-              <h3 class="ticket-subsection-title">変更手続きについて</h3>
-              <p class="ticket-text">
-                有効期限内で「未使用」の場合に限り、予約・購入履歴の詳細からオンラインにて内容の変更が可能です。<br>
-                <span style="color:rgba(255,255,255,0.45);font-size:13px;">※ 一部変更できない券種もございます</span>
-              </p>
-
-              <!-- 変更できる/できない項目 -->
-              <div class="change-grid" style="margin-top:20px;">
-                <div class="change-col ok">
-                  <div class="change-col-header ok">
-                    <span>✅</span> 変更できる項目
-                  </div>
-                  <div class="change-col-body">
-                    <div class="change-item">入園日</div>
-                    <div class="change-item">年齢区分</div>
-                  </div>
-                </div>
-                <div class="change-col ng">
-                  <div class="change-col-header ng">
-                    <span>❌</span> 変更できない項目
-                  </div>
-                  <div class="change-col-body">
-                    <div class="change-item">入園パーク（ランド ⇔ シーの変更）</div>
-                    <div class="change-item">パークチケットの券種</div>
-                  </div>
-                </div>
-              </div>
-
-              <!-- 変更時の注意事項 -->
-              <h3 class="ticket-subsection-title" style="margin-top:28px;">変更時のご注意事項</h3>
-              <div class="detail-list">
-                <div class="detail-item">
-                  <div class="detail-label">精算について</div>
-                  <div class="detail-value">
-                    変更の際には、差額の有無に関わらずクレジットカード等での精算が発生します。<br>
-                    <span style="color:rgba(255,255,255,0.45);font-size:12px;">※ セキュリティ強化により、オンラインでの変更ができない場合があります</span>
-                  </div>
-                </div>
-                <div class="detail-item">
-                  <div class="detail-label">有効期限について</div>
-                  <div class="detail-value">
-                    入園日等の変更を行った場合でも、パークチケットの有効期限自体は延長されません。期限を過ぎると無効となります。
-                  </div>
-                </div>
-                <div class="detail-item">
-                  <div class="detail-label">複数枚の変更について</div>
-                  <div class="detail-value">
-                    すべて同じ入園日に変更する場合は一度のお手続きで可能ですが、異なる入園日に変更をする場合は、チケットごとに変更手続きを行ってください。
-                  </div>
-                </div>
-              </div>
-            </div>
-
-          </div>
-        </div>
-
-        <!-- Source Note -->
-        <div class="source-note fade-up">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" opacity="0.5"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
-          参考：
-          <a href="https://www.tokyodisneyresort.jp/ticket/index.html" target="_blank" rel="noopener noreferrer">
-            https://www.tokyodisneyresort.jp/ticket/index.html
-          </a>
-        </div>
-
-      </main>
+    <!-- Main CTA -->
+    <div class="ticket-cta fade-up">
+      <div class="ticket-cta-label">Official Tickets</div>
+      <h1 class="ticket-cta-title">パークチケットを確認・購入する</h1>
+      <p class="ticket-cta-text">
+        東京ディズニーリゾートのパークチケットは、公式サイト・公式アプリから確認・購入できます。<br>
+        販売状況、価格、券種は時期によって変わるため、最新情報は必ず公式サイトでご確認ください。
+      </p>
+      <div class="ticket-cta-buttons">
+        <a href="https://www.tokyodisneyresort.jp/ticket/index.html" target="_blank" rel="noopener noreferrer" class="btn btn-primary">
+          公式チケットページへ
+        </a>
+        <a href="https://www.tokyodisneyresort.jp/ticket/purchase.html" target="_blank" rel="noopener noreferrer" class="btn btn-primary">
+          オンラインで購入する
+        </a>
+        <a href="https://www.tokyodisneyresort.jp/ticket/change/howto.html" target="_blank" rel="noopener noreferrer" class="btn btn-primary">
+          チケット変更ページへ
+        </a>
+      </div>
     </div>
+
+    <!-- Notice before checking tickets -->
+    <div class="ticket-block fade-up">
+      <h2 class="ticket-block-title"><span class="ticket-block-icon">⚠️</span>チケット確認前の注意</h2>
+      <ul class="notice-list">
+        <li>販売状況、価格、券種は時期によって変わるため、最新情報は公式サイトでご確認ください。</li>
+        <li>購入後のお客様都合によるキャンセル・払い戻しはできません。</li>
+        <li>購入済みチケットの変更方法や条件は、公式のチケット変更ページでご確認ください。</li>
+        <li>当サイトではパークチケットの販売・予約代行は行っていません。</li>
+      </ul>
+    </div>
+
+    <!-- Disclaimer -->
+    <div class="ticket-disclaimer fade-up">
+      ※ 当サイトではパークチケットの販売・予約代行は行っていません。<br>
+      購入・変更・販売状況の確認は、東京ディズニーリゾート公式サイトをご利用ください。
+    </div>
+
+    <!-- Official Links -->
+    <div class="ticket-block fade-up">
+      <h2 class="ticket-block-title"><span class="ticket-block-icon">🔗</span>よく使う公式リンク</h2>
+      <div class="official-links">
+        <a href="https://www.tokyodisneyresort.jp/ticket/index.html" target="_blank" rel="noopener noreferrer" class="official-link-card">
+          <span class="official-link-name">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+            パークチケットTOP
+          </span>
+          <span class="official-link-desc">販売状況、価格、券種を確認できます。</span>
+        </a>
+        <a href="https://www.tokyodisneyresort.jp/ticket/purchase.html" target="_blank" rel="noopener noreferrer" class="official-link-card">
+          <span class="official-link-name">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+            オンライン購入方法
+          </span>
+          <span class="official-link-desc">公式サイト・公式アプリでの購入方法を確認できます。</span>
+        </a>
+        <a href="https://www.tokyodisneyresort.jp/ticket/change/howto.html" target="_blank" rel="noopener noreferrer" class="official-link-card">
+          <span class="official-link-name">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+            チケット変更方法
+          </span>
+          <span class="official-link-desc">購入済みチケットの変更方法を確認できます。</span>
+        </a>
+        <a href="https://faq.tokyodisneyresort.jp/" target="_blank" rel="noopener noreferrer" class="official-link-card">
+          <span class="official-link-name">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+            チケット関連FAQ
+          </span>
+          <span class="official-link-desc">キャンセル、変更、共有、支払いなどのよくある質問を確認できます。</span>
+        </a>
+      </div>
+    </div>
+
+    <!-- Source Note -->
+    <div class="source-note fade-up">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" opacity="0.5"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+      最新情報は、東京ディズニーリゾート公式サイトでご確認ください。
+    </div>
+
   </div>
 </section>
 
@@ -789,25 +436,14 @@
   </div>
 </footer>
 
+<!-- Mobile Fixed CTA (mobile only) -->
+<a href="https://www.tokyodisneyresort.jp/ticket/index.html" target="_blank" rel="noopener noreferrer" class="mobile-fixed-cta">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+  公式チケットページへ
+</a>
+
 <button class="scroll-top" aria-label="ページトップへ">↑</button>
 
 <script src="js/main.js"></script>
-<script>
-  // Sidebar active state on scroll
-  const sections = document.querySelectorAll('[id]');
-  const sidebarLinks = document.querySelectorAll('.sidebar-nav a');
-
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        sidebarLinks.forEach(a => a.classList.remove('active'));
-        const active = document.querySelector(`.sidebar-nav a[href="#${entry.target.id}"]`);
-        if (active) active.classList.add('active');
-      }
-    });
-  }, { rootMargin: '-30% 0px -60% 0px' });
-
-  sections.forEach(s => observer.observe(s));
-</script>
 </body>
 </html>
