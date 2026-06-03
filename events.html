@@ -74,14 +74,17 @@
     .activity-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr));
-      column-gap: clamp(36px, 4vw, 48px);
-      row-gap: 36px;
+      justify-items: center;
+      column-gap: clamp(56px, 5vw, 80px);
+      row-gap: 40px;
       max-width: 1100px;
       margin: 0 auto;
     }
 
     /* Card */
     .activity-card {
+      width: 100%;
+      max-width: 460px;
       display: flex;
       flex-direction: column;
       background: var(--activity-card);
@@ -374,6 +377,10 @@
       .activity-grid {
         grid-template-columns: 1fr;
         gap: 20px;
+      }
+
+      .activity-card {
+        max-width: none;
       }
 
       .activity-modal-header {
