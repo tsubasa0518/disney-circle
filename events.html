@@ -4,94 +4,407 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>サークル企画 | Disney Circle Mouse</title>
-  <meta name="description" content="東京ディズニーリゾートで開催される全イベントの一覧。シーズン別フィルターで絞り込み可能。" />
+  <meta name="description" content="一橋・津田塾ディズニー同好会 Mouse のサークル企画。開催予定と過去イベントをカード形式でご紹介します。" />
   <link rel="stylesheet" href="css/style.css" />
   <style>
-    .events-page-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
-      gap: 28px;
+    /* ===== Activity Events Page (events.html scoped) ===== */
+    .activity-events {
+      --activity-navy: #06142e;
+      --activity-deep-navy: #020817;
+      --activity-card: #0b1733;
+      --activity-gold: #d8b45a;
+      --activity-light-gold: #f4df9b;
+      --activity-text: #ffffff;
+      --activity-muted: #b8c0d4;
     }
-    .event-detail-card {
-      background: rgba(255,255,255,0.04);
-      border: 1px solid rgba(255,255,255,0.1);
-      border-radius: 20px;
-      overflow: hidden;
-      transition: all 0.4s ease;
-      cursor: pointer;
+
+    .activity-intro {
+      max-width: 760px;
+      margin: 0 auto 32px;
+      text-align: center;
+      color: var(--activity-muted);
+      font-size: 15px;
+      line-height: 1.85;
     }
-    .event-detail-card:hover {
-      border-color: rgba(200, 169, 81, 0.5);
-      transform: translateY(-6px);
-      box-shadow: 0 20px 60px rgba(0,0,0,0.5);
-    }
-    .event-timeline {
-      max-width: 800px;
-      margin: 0 auto 80px;
-    }
-    .timeline-item {
+
+    /* Tabs */
+    .activity-tabs {
       display: flex;
-      gap: 24px;
-      margin-bottom: 32px;
+      justify-content: center;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin: 0 auto 36px;
+    }
+
+    .activity-tab {
+      background: rgba(216, 180, 90, 0.06);
+      border: 1px solid rgba(216, 180, 90, 0.35);
+      color: var(--activity-light-gold);
+      font-family: 'Noto Sans JP', sans-serif;
+      font-size: 14px;
+      font-weight: 600;
+      letter-spacing: 1px;
+      padding: 10px 24px;
+      border-radius: 999px;
+      cursor: pointer;
+      transition: background 0.25s ease, color 0.25s ease, border-color 0.25s ease, transform 0.25s ease;
+    }
+
+    .activity-tab:hover {
+      background: rgba(216, 180, 90, 0.16);
+      border-color: var(--activity-gold);
+    }
+
+    .activity-tab[aria-selected="true"] {
+      background: linear-gradient(135deg, var(--activity-gold), var(--activity-light-gold));
+      color: var(--activity-deep-navy);
+      border-color: var(--activity-light-gold);
+      box-shadow: 0 8px 22px rgba(216, 180, 90, 0.25);
+    }
+
+    .activity-tabpanel {
+      display: none;
+    }
+
+    .activity-tabpanel.is-active {
+      display: block;
+    }
+
+    /* Grid */
+    .activity-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 28px;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    /* Card */
+    .activity-card {
+      display: flex;
+      flex-direction: column;
+      background: var(--activity-card);
+      border: 1px solid rgba(216, 180, 90, 0.25);
+      border-radius: 18px;
+      overflow: hidden;
+      transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+    }
+
+    .activity-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 18px 40px rgba(0, 0, 0, 0.35);
+      border-color: rgba(244, 223, 155, 0.55);
+    }
+
+    .activity-card-image {
       position: relative;
+      aspect-ratio: 16 / 9;
+      background: linear-gradient(135deg, var(--activity-navy), var(--activity-deep-navy));
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      color: var(--activity-light-gold);
+      border-bottom: 1px solid rgba(216, 180, 90, 0.2);
     }
-    .timeline-item::before {
-      content: '';
+
+    .activity-card-image.is-upcoming {
+      background: linear-gradient(135deg, #0b1c44, #06142e 70%);
+    }
+
+    .activity-card-image.is-past {
+      background: linear-gradient(135deg, #1a1f3a, #06142e 70%);
+      filter: saturate(0.85);
+    }
+
+    .activity-card-image-emoji {
+      font-size: 48px;
+      line-height: 1;
+    }
+
+    .activity-card-image-label {
+      font-family: 'Cinzel', serif;
+      font-size: 12px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: rgba(244, 223, 155, 0.7);
+    }
+
+    .activity-status {
       position: absolute;
-      left: 23px;
-      top: 48px;
-      bottom: -32px;
-      width: 2px;
-      background: linear-gradient(to bottom, rgba(200,169,81,0.5), transparent);
+      top: 12px;
+      left: 12px;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      padding: 5px 12px;
+      border-radius: 999px;
+      background: rgba(2, 8, 23, 0.7);
+      backdrop-filter: blur(4px);
+      border: 1px solid rgba(216, 180, 90, 0.5);
+      color: var(--activity-light-gold);
     }
-    .timeline-item:last-child::before { display: none; }
-    .timeline-icon {
-      width: 48px;
-      height: 48px;
+
+    .activity-status.is-past {
+      color: var(--activity-muted);
+      border-color: rgba(184, 192, 212, 0.4);
+    }
+
+    .activity-card-body {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      padding: 22px 22px 24px;
+      color: var(--activity-text);
+    }
+
+    .activity-card-title {
+      font-family: 'Noto Sans JP', sans-serif;
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--activity-light-gold);
+      line-height: 1.45;
+      margin: 0;
+    }
+
+    .activity-card-meta {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      font-size: 13px;
+      color: var(--activity-muted);
+    }
+
+    .activity-card-meta-row {
+      display: flex;
+      gap: 8px;
+      align-items: flex-start;
+    }
+
+    .activity-card-meta-icon {
+      flex-shrink: 0;
+      width: 16px;
+      color: var(--activity-gold);
+      font-size: 13px;
+      line-height: 1.5;
+    }
+
+    .activity-card-summary {
+      font-size: 13.5px;
+      line-height: 1.75;
+      color: rgba(255, 255, 255, 0.82);
+      margin: 0;
+    }
+
+    .activity-card-button {
+      margin-top: auto;
+      align-self: flex-start;
+      background: transparent;
+      border: 1px solid var(--activity-gold);
+      color: var(--activity-light-gold);
+      font-family: 'Noto Sans JP', sans-serif;
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 1px;
+      padding: 9px 20px;
+      border-radius: 999px;
+      cursor: pointer;
+      transition: background 0.25s ease, color 0.25s ease, transform 0.25s ease;
+    }
+
+    .activity-card-button:hover {
+      background: var(--activity-gold);
+      color: var(--activity-deep-navy);
+    }
+
+    /* Empty */
+    .activity-empty {
+      text-align: center;
+      padding: 48px 16px;
+      color: var(--activity-muted);
+      font-size: 14px;
+    }
+
+    /* Modal */
+    .activity-modal-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(2, 8, 23, 0.78);
+      backdrop-filter: blur(6px);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 1000;
+      padding: 20px;
+    }
+
+    .activity-modal-overlay.is-open {
+      display: flex;
+    }
+
+    .activity-modal {
+      background: var(--activity-card);
+      border: 1px solid rgba(216, 180, 90, 0.4);
+      border-radius: 20px;
+      max-width: 560px;
+      width: 100%;
+      max-height: 90vh;
+      overflow-y: auto;
+      position: relative;
+      color: var(--activity-text);
+      box-shadow: 0 30px 80px rgba(0, 0, 0, 0.6);
+    }
+
+    .activity-modal-header {
+      padding: 28px 32px 12px;
+      border-bottom: 1px solid rgba(216, 180, 90, 0.18);
+    }
+
+    .activity-modal-status {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      padding: 4px 12px;
+      border-radius: 999px;
+      background: rgba(216, 180, 90, 0.15);
+      color: var(--activity-light-gold);
+      border: 1px solid rgba(216, 180, 90, 0.5);
+      margin-bottom: 12px;
+    }
+
+    .activity-modal-status.is-past {
+      color: var(--activity-muted);
+      border-color: rgba(184, 192, 212, 0.4);
+      background: rgba(184, 192, 212, 0.1);
+    }
+
+    .activity-modal-title {
+      font-family: 'Noto Sans JP', sans-serif;
+      font-size: 22px;
+      font-weight: 700;
+      color: var(--activity-light-gold);
+      margin: 0;
+      line-height: 1.4;
+    }
+
+    .activity-modal-close {
+      position: absolute;
+      top: 14px;
+      right: 14px;
+      width: 36px;
+      height: 36px;
       border-radius: 50%;
-      background: rgba(200, 169, 81, 0.15);
-      border: 2px solid rgba(200, 169, 81, 0.4);
+      border: 1px solid rgba(216, 180, 90, 0.4);
+      background: rgba(2, 8, 23, 0.6);
+      color: var(--activity-light-gold);
+      font-size: 16px;
+      cursor: pointer;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 24px;
-      flex-shrink: 0;
+      transition: background 0.2s ease, transform 0.2s ease;
     }
-    .timeline-content {
-      flex: 1;
-      background: rgba(255,255,255,0.03);
-      border: 1px solid rgba(255,255,255,0.08);
-      border-radius: 16px;
-      padding: 20px 24px;
+
+    .activity-modal-close:hover {
+      background: var(--activity-gold);
+      color: var(--activity-deep-navy);
     }
-    .timeline-period {
-      font-size: 12px;
-      letter-spacing: 2px;
-      color: var(--disney-gold);
-      margin-bottom: 6px;
+
+    .activity-modal-body {
+      padding: 22px 32px 28px;
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
     }
-    .timeline-title {
-      font-family: 'Cinzel', serif;
-      font-size: 18px;
-      margin-bottom: 8px;
-    }
-    .timeline-desc {
+
+    .activity-modal-info {
+      display: grid;
+      grid-template-columns: 100px 1fr;
+      gap: 10px 16px;
       font-size: 14px;
-      color: rgba(255,255,255,0.55);
+      color: var(--activity-muted);
+    }
+
+    .activity-modal-info dt {
+      color: var(--activity-gold);
+      font-weight: 600;
+      font-size: 12px;
+      letter-spacing: 1px;
+      padding-top: 2px;
+    }
+
+    .activity-modal-info dd {
+      margin: 0;
+      color: var(--activity-text);
       line-height: 1.7;
     }
-    .tag-bar {
-      display: flex;
-      gap: 8px;
-      margin-top: 12px;
-      flex-wrap: wrap;
+
+    .activity-modal-section-title {
+      font-size: 12px;
+      letter-spacing: 2px;
+      color: var(--activity-gold);
+      text-transform: uppercase;
+      margin: 4px 0 4px;
     }
-    .tag-bar span {
-      font-size: 11px;
-      padding: 3px 10px;
-      border-radius: 10px;
-      background: rgba(200,169,81,0.15);
-      color: var(--disney-gold-light);
+
+    .activity-modal-list {
+      margin: 0;
+      padding-left: 20px;
+      color: var(--activity-text);
+      font-size: 14px;
+      line-height: 1.8;
+    }
+
+    .activity-modal-note {
+      font-size: 12.5px;
+      color: var(--activity-muted);
+      line-height: 1.7;
+      padding: 12px 14px;
+      background: rgba(216, 180, 90, 0.07);
+      border-left: 3px solid var(--activity-gold);
+      border-radius: 6px;
+    }
+
+    /* Responsive */
+    @media (max-width: 640px) {
+      .activity-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+      }
+
+      .activity-modal-header {
+        padding: 24px 22px 12px;
+      }
+
+      .activity-modal-body {
+        padding: 18px 22px 24px;
+      }
+
+      .activity-modal-info {
+        grid-template-columns: 88px 1fr;
+        gap: 8px 12px;
+        font-size: 13.5px;
+      }
+
+      .activity-modal-title {
+        font-size: 19px;
+      }
+    }
+
+    /* Reduced motion */
+    @media (prefers-reduced-motion: reduce) {
+      .activity-card,
+      .activity-tab,
+      .activity-card-button,
+      .activity-modal-close {
+        transition: none;
+      }
+      .activity-card:hover {
+        transform: none;
+      }
     }
   </style>
 </head>
@@ -128,119 +441,54 @@
 
 <!-- Page Hero -->
 <section class="page-hero">
-  <div class="page-hero-title fade-up">イベント企画</div>
-  <p class="page-hero-desc fade-up">2026年に本サークルで開催予定のイベント企画をご覧いただけます。</p>
+  <div class="page-hero-title fade-up">サークル企画</div>
+  <p class="page-hero-desc fade-up">Mouseの開催予定の企画と、これまでの活動をご紹介します。</p>
 </section>
 
-<!-- Events Section -->
-<section class="section" style="padding-top:0">
+<!-- Activity Events Section -->
+<section class="section activity-events" style="padding-top:0">
   <div class="container">
-    <!-- Filter Tabs -->
-    <div class="filter-tabs fade-up">
-      <button class="filter-tab active" data-filter="all">すべて</button>
-      <button class="filter-tab" data-filter="ongoing">開催予定</button>
-      <button class="filter-tab" data-filter="upcoming">過去イベント</button>
+
+    <p class="activity-intro fade-up">
+      Mouseでは、パーク企画や映画鑑賞、ご飯会など、ディズニーを通じて交流できる企画を行っています。<br>
+      開催予定の企画と過去の活動を、カード形式でわかりやすく紹介します。
+    </p>
+
+    <!-- Tabs -->
+    <div class="activity-tabs fade-up" role="tablist" aria-label="サークル企画の表示切り替え">
+      <button class="activity-tab" role="tab" id="activity-tab-upcoming"
+              aria-selected="true" aria-controls="activity-panel-upcoming"
+              data-target="upcoming">開催予定</button>
+      <button class="activity-tab" role="tab" id="activity-tab-past"
+              aria-selected="false" aria-controls="activity-panel-past" tabindex="-1"
+              data-target="past">過去イベント</button>
     </div>
 
-    <!-- Events Grid -->
-    <div class="events-grid" id="events-grid"></div>
+    <!-- Upcoming Panel -->
+    <div class="activity-tabpanel is-active" id="activity-panel-upcoming"
+         role="tabpanel" aria-labelledby="activity-tab-upcoming">
+      <div class="activity-grid" id="activity-grid-upcoming"></div>
+    </div>
+
+    <!-- Past Panel -->
+    <div class="activity-tabpanel" id="activity-panel-past"
+         role="tabpanel" aria-labelledby="activity-tab-past" hidden>
+      <div class="activity-grid" id="activity-grid-past"></div>
+    </div>
+
   </div>
 </section>
 
-<div class="divider container"><span class="divider-icon">✦</span></div>
-
-<!-- Timeline Section -->
-<section class="section">
-  <div class="container">
-    <div class="section-header fade-up">
-      <div class="section-tag">✦ 2026 Schedule ✦</div>
-      <h2 class="section-title">年間スケジュール</h2>
-      <p class="section-desc">2026年のディズニーイベント年間スケジュールをご確認ください。</p>
+<!-- Activity Event Modal -->
+<div class="activity-modal-overlay" id="activity-modal" role="dialog" aria-modal="true" aria-labelledby="activity-modal-title" aria-hidden="true">
+  <div class="activity-modal">
+    <button type="button" class="activity-modal-close" id="activity-modal-close" aria-label="モーダルを閉じる">✕</button>
+    <div class="activity-modal-header">
+      <span class="activity-modal-status" id="activity-modal-status">開催予定</span>
+      <h2 class="activity-modal-title" id="activity-modal-title">企画タイトル</h2>
     </div>
-    <div class="event-timeline">
-      <div class="timeline-item fade-up">
-        <div class="timeline-icon">🐣</div>
-        <div class="timeline-content">
-          <div class="timeline-period">3月20日 〜 5月20日</div>
-          <div class="timeline-title">ディズニー・イースター 2026</div>
-          <p class="timeline-desc">カラフルなイースターエッグとうさぎキャラクターが主役の春のお祭り。パステルカラーに彩られたパーク内をお楽しみください。</p>
-          <div class="tag-bar"><span>東京ディズニーシー</span><span>開催予定</span></div>
-        </div>
-      </div>
-      <div class="timeline-item fade-up">
-        <div class="timeline-icon">🌸</div>
-        <div class="timeline-content">
-          <div class="timeline-period">4月1日 〜 6月10日</div>
-          <div class="timeline-title">ディズニー・スプリング・カーニバル</div>
-          <p class="timeline-desc">花と魔法の春のカーニバル。ミッキーとミニーが春の衣装をまとい、華やかなパレードでお出迎え。</p>
-          <div class="tag-bar"><span>東京ディズニーランド</span><span>過去イベント</span></div>
-        </div>
-      </div>
-      <div class="timeline-item fade-up">
-        <div class="timeline-icon">🎆</div>
-        <div class="timeline-content">
-          <div class="timeline-period">7月1日 〜 8月31日</div>
-          <div class="timeline-title">ディズニー・サマー・スプラッシュ</div>
-          <p class="timeline-desc">水と音楽の夏フェスタ。毎夜の花火ショーや夏限定ウォータースペクタキュラーが夏の夜を彩ります。</p>
-          <div class="tag-bar"><span>東京ディズニーシー</span><span>過去イベント</span></div>
-        </div>
-      </div>
-      <div class="timeline-item fade-up">
-        <div class="timeline-icon">🎃</div>
-        <div class="timeline-content">
-          <div class="timeline-period">9月8日 〜 11月1日</div>
-          <div class="timeline-title">ディズニー・ハロウィーン 2026</div>
-          <p class="timeline-desc">ヴィランズが夜のパークを支配するスリリングなハロウィーン。仮装して参加できる特別なコスチュームデーも開催。</p>
-          <div class="tag-bar"><span>東京ディズニーランド</span><span>過去イベント</span></div>
-        </div>
-      </div>
-      <div class="timeline-item fade-up">
-        <div class="timeline-icon">🎄</div>
-        <div class="timeline-content">
-          <div class="timeline-period">11月10日 〜 12月25日</div>
-          <div class="timeline-title">ディズニー・クリスマス 2026</div>
-          <p class="timeline-desc">雪と光のウィンターワンダーランド。無数のイルミネーションとクリスマスパレードが感動的な体験をお届けします。</p>
-          <div class="tag-bar"><span>東京ディズニーリゾート</span><span>過去イベント</span></div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- Event Modal -->
-<div class="modal-overlay" id="event-modal-overlay">
-  <div class="modal">
-    <div class="modal-hero">
-      <span class="modal-hero-emoji" style="font-size:80px"></span>
-      <button class="modal-close" onclick="closeEventModal()">✕</button>
-    </div>
-    <div class="modal-body">
-      <div class="modal-season"></div>
-      <h2 class="modal-title"></h2>
-      <p class="modal-desc"></p>
-      <div class="modal-info-grid">
-        <div class="modal-info-item">
-          <div class="modal-info-label">開始日</div>
-          <div class="modal-info-value modal-start"></div>
-        </div>
-        <div class="modal-info-item">
-          <div class="modal-info-label">終了日</div>
-          <div class="modal-info-value modal-end"></div>
-        </div>
-        <div class="modal-info-item">
-          <div class="modal-info-label">開催パーク</div>
-          <div class="modal-info-value modal-location"></div>
-        </div>
-        <div class="modal-info-item">
-          <div class="modal-info-label">ステータス</div>
-          <div class="modal-info-value modal-status"></div>
-        </div>
-      </div>
-      <div class="modal-highlights">
-        <h4>ハイライト</h4>
-        <ul class="modal-highlight-list modal-highlights-list"></ul>
-      </div>
-      <button class="btn btn-primary" onclick="closeEventModal()" style="width:100%;justify-content:center;cursor:pointer;">閉じる</button>
+    <div class="activity-modal-body" id="activity-modal-body">
+      <!-- JS で内容を差し込みます -->
     </div>
   </div>
 </div>
@@ -283,5 +531,266 @@
 <button class="scroll-top" aria-label="ページトップへ">↑</button>
 
 <script src="js/main.js"></script>
+<script>
+  // ===== Activity Events (events.html scoped) =====
+  (function () {
+    const ACTIVITY_EVENTS = [
+      {
+        id: 'shinkan-meal-2026-06-07',
+        status: 'upcoming',
+        title: '新歓ご飯会',
+        emoji: '🍽️',
+        imageLabel: 'Welcome Dinner',
+        date: '2026年6月7日（日）',
+        time: '18:00〜20:00',
+        location: '吉祥寺',
+        locationDetail: 'ラパウザ吉祥寺ダイヤ街店を予定',
+        price: '2,980円',
+        capacity: null,
+        summary: '新入生歓迎と親睦を兼ねたご飯会',
+        details: [
+          '新入生歓迎・親睦会を兼ねたご飯会',
+          'ソフトドリンク飲み放題付き',
+          'ピザ・パスタ全21種食べ放題スタンダードコース予定',
+        ],
+        note: '細かい時間、場所、予算は変更の可能性あり',
+      },
+      {
+        id: 'movie-wall-e-2026-06-21',
+        status: 'upcoming',
+        title: '映画鑑賞企画',
+        emoji: '🎬',
+        imageLabel: 'Movie Night',
+        date: '2026年6月21日（日）',
+        time: '13:00〜15:00',
+        location: 'レンタルスペース（未定）',
+        price: '未定',
+        movie: 'ディズニー／ピクサー「ウォーリー」',
+        summary: 'ディズニー／ピクサー作品を見る映画鑑賞会です！',
+        details: [
+          'サークル員で映画を鑑賞する',
+          '鑑賞を通して交流する企画',
+        ],
+        note: null,
+      },
+      {
+        id: 'mandalorian-2026-07-05',
+        status: 'upcoming',
+        title: 'マンダロリアン・アンド・グローグー鑑賞企画',
+        emoji: '🎥',
+        imageLabel: 'Cinema Outing',
+        date: '2026年7月5日（日）',
+        time: '14時以降の上映回を予定',
+        location: '新宿の映画館',
+        price: '映画のチケット代',
+        capacity: '10名',
+        summary: 'スター・ウォーズ最新作を映画館で鑑賞する少人数の映画企画です。',
+        details: [
+          '2026年5月公開のスター・ウォーズ最新作を観に行く企画',
+          'スター・ウォーズ未履修の人でも楽しめる作品',
+        ],
+        note: null,
+      },
+      {
+        id: 'shinkan-impa-2026-05-23',
+        status: 'past',
+        title: '新歓・インパ企画',
+        emoji: '🏰',
+        imageLabel: 'Tokyo DisneySea',
+        date: '2026年5月23日（土）',
+        time: '終日',
+        location: '東京ディズニーシー',
+        price: '1dayパスポート代等（各自購入）',
+        summary: '班ごとに東京ディズニーシーを回り、パークを楽しみながら交流した新歓企画です。',
+        details: [
+          '事前にどのようにパークを回りたいかアンケートを実施',
+          'アトラクション中心、ショー中心、グリーティング中心などの希望を確認',
+          '組まれた班で当日パークを回る',
+          '夕方ごろにサークル全体で集合',
+          'その後は自由行動',
+        ],
+        note: null,
+      },
+    ];
+
+    const escapeHtml = (s) =>
+      String(s).replace(/[&<>"']/g, (c) => ({
+        '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'
+      }[c]));
+
+    function renderCard(ev) {
+      const isPast = ev.status === 'past';
+      const statusLabel = isPast ? '過去イベント' : '開催予定';
+      const imageClass = isPast ? 'is-past' : 'is-upcoming';
+      const statusClass = isPast ? 'is-past' : '';
+
+      const metaRows = [
+        { icon: '📅', text: ev.date },
+        { icon: '⏰', text: ev.time },
+        { icon: '📍', text: ev.location },
+        { icon: '💴', text: ev.price },
+      ];
+      if (ev.capacity) metaRows.push({ icon: '👥', text: `定員 ${ev.capacity}` });
+
+      const metaHtml = metaRows.map(r => `
+        <div class="activity-card-meta-row">
+          <span class="activity-card-meta-icon" aria-hidden="true">${r.icon}</span>
+          <span>${escapeHtml(r.text)}</span>
+        </div>
+      `).join('');
+
+      return `
+        <article class="activity-card">
+          <div class="activity-card-image ${imageClass}" aria-hidden="true">
+            <span class="activity-status ${statusClass}">${statusLabel}</span>
+            <span class="activity-card-image-emoji">${ev.emoji}</span>
+            <span class="activity-card-image-label">${escapeHtml(ev.imageLabel)}</span>
+          </div>
+          <div class="activity-card-body">
+            <h3 class="activity-card-title">${escapeHtml(ev.title)}</h3>
+            <div class="activity-card-meta">${metaHtml}</div>
+            <p class="activity-card-summary">${escapeHtml(ev.summary)}</p>
+            <button type="button" class="activity-card-button" data-activity-id="${ev.id}" aria-haspopup="dialog">詳細を見る</button>
+          </div>
+        </article>
+      `;
+    }
+
+    function renderGrids() {
+      const upcoming = ACTIVITY_EVENTS.filter(e => e.status === 'upcoming');
+      const past = ACTIVITY_EVENTS.filter(e => e.status === 'past');
+
+      const upGrid = document.getElementById('activity-grid-upcoming');
+      const pastGrid = document.getElementById('activity-grid-past');
+
+      upGrid.innerHTML = upcoming.length
+        ? upcoming.map(renderCard).join('')
+        : '<p class="activity-empty">現在、開催予定のイベントはありません。</p>';
+
+      pastGrid.innerHTML = past.length
+        ? past.map(renderCard).join('')
+        : '<p class="activity-empty">過去のイベントはまだありません。</p>';
+    }
+
+    // ----- Tabs -----
+    function initTabs() {
+      const tabs = document.querySelectorAll('.activity-tab');
+      tabs.forEach(tab => {
+        tab.addEventListener('click', () => activateTab(tab));
+        tab.addEventListener('keydown', (e) => {
+          if (e.key !== 'ArrowRight' && e.key !== 'ArrowLeft') return;
+          e.preventDefault();
+          const arr = Array.from(tabs);
+          const idx = arr.indexOf(tab);
+          const next = e.key === 'ArrowRight'
+            ? arr[(idx + 1) % arr.length]
+            : arr[(idx - 1 + arr.length) % arr.length];
+          activateTab(next);
+          next.focus();
+        });
+      });
+    }
+
+    function activateTab(tab) {
+      const target = tab.dataset.target;
+      document.querySelectorAll('.activity-tab').forEach(t => {
+        const active = t === tab;
+        t.setAttribute('aria-selected', String(active));
+        t.tabIndex = active ? 0 : -1;
+      });
+      document.querySelectorAll('.activity-tabpanel').forEach(p => {
+        const active = p.id === `activity-panel-${target}`;
+        p.classList.toggle('is-active', active);
+        if (active) p.removeAttribute('hidden');
+        else p.setAttribute('hidden', '');
+      });
+    }
+
+    // ----- Modal -----
+    const overlay = document.getElementById('activity-modal');
+    const modalTitle = document.getElementById('activity-modal-title');
+    const modalStatus = document.getElementById('activity-modal-status');
+    const modalBody = document.getElementById('activity-modal-body');
+    const modalClose = document.getElementById('activity-modal-close');
+    let lastFocused = null;
+
+    function openModal(id) {
+      const ev = ACTIVITY_EVENTS.find(e => e.id === id);
+      if (!ev) return;
+      lastFocused = document.activeElement;
+
+      const isPast = ev.status === 'past';
+      modalStatus.textContent = isPast ? '過去イベント' : '開催予定';
+      modalStatus.classList.toggle('is-past', isPast);
+      modalTitle.textContent = ev.title;
+
+      const infoRows = [
+        ['開催日', ev.date],
+        ['時間', ev.time],
+        ['場所', ev.locationDetail ? `${ev.location}（${ev.locationDetail}）` : ev.location],
+        ['料金', ev.price],
+      ];
+      if (ev.capacity) infoRows.push(['定員', ev.capacity]);
+      if (ev.movie) infoRows.push(['鑑賞作品', ev.movie]);
+
+      const infoHtml = `
+        <dl class="activity-modal-info">
+          ${infoRows.map(([k, v]) => `<dt>${escapeHtml(k)}</dt><dd>${escapeHtml(v)}</dd>`).join('')}
+        </dl>
+      `;
+
+      const detailsHtml = ev.details && ev.details.length ? `
+        <div>
+          <div class="activity-modal-section-title">内容</div>
+          <ul class="activity-modal-list">
+            ${ev.details.map(d => `<li>${escapeHtml(d)}</li>`).join('')}
+          </ul>
+        </div>
+      ` : '';
+
+      const noteHtml = ev.note
+        ? `<p class="activity-modal-note">※ ${escapeHtml(ev.note)}</p>`
+        : '';
+
+      modalBody.innerHTML = infoHtml + detailsHtml + noteHtml;
+
+      overlay.classList.add('is-open');
+      overlay.setAttribute('aria-hidden', 'false');
+      document.body.style.overflow = 'hidden';
+      modalClose.focus();
+    }
+
+    function closeModal() {
+      overlay.classList.remove('is-open');
+      overlay.setAttribute('aria-hidden', 'true');
+      document.body.style.overflow = '';
+      if (lastFocused && typeof lastFocused.focus === 'function') {
+        lastFocused.focus();
+      }
+    }
+
+    function initModal() {
+      modalClose.addEventListener('click', closeModal);
+      overlay.addEventListener('click', (e) => {
+        if (e.target === overlay) closeModal();
+      });
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && overlay.classList.contains('is-open')) {
+          closeModal();
+        }
+      });
+      document.addEventListener('click', (e) => {
+        const btn = e.target.closest('.activity-card-button');
+        if (btn) openModal(btn.dataset.activityId);
+      });
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      renderGrids();
+      initTabs();
+      initModal();
+    });
+  })();
+</script>
 </body>
 </html>
