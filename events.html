@@ -47,12 +47,24 @@
       padding: 10px 24px;
       border-radius: 999px;
       cursor: pointer;
-      transition: background 0.25s ease, color 0.25s ease, border-color 0.25s ease, transform 0.25s ease;
+      transition: background 0.25s ease, color 0.25s ease, border-color 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease;
     }
 
     .activity-tab:hover {
       background: rgba(216, 180, 90, 0.16);
       border-color: var(--activity-gold);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 18px rgba(216, 180, 90, 0.28);
+    }
+
+    .activity-tab:active {
+      transform: translateY(0);
+      box-shadow: none;
+    }
+
+    .activity-tab:focus-visible {
+      outline: 2px solid var(--activity-gold);
+      outline-offset: 3px;
     }
 
     .activity-tab[aria-selected="true"] {
@@ -415,8 +427,11 @@
       .activity-modal-close {
         transition: none;
       }
-      .activity-card:hover {
+      .activity-card:hover,
+      .activity-tab:hover,
+      .activity-tab:active {
         transform: none;
+        box-shadow: none;
       }
     }
   </style>
@@ -446,7 +461,6 @@
       <li><a href="events.html" class="active">サークル企画</a></li>
       <li><a href="news.html">最新情報</a></li>
       <li><a href="faq.html">Q＆A</a></li>
-      <li><a href="ticket.html" class="nav-cta btn">チケット情報</a></li>
     </ul>
     <div class="hamburger"><span></span><span></span><span></span></div>
   </div>
@@ -461,11 +475,6 @@
 <!-- Activity Events Section -->
 <section class="section activity-events" style="padding-top:0">
   <div class="container">
-
-    <p class="activity-intro fade-up">
-      Mouseでは、パーク企画や映画鑑賞、ご飯会など、ディズニーを通じて交流できる企画を行っています。<br>
-      開催予定の企画と過去の活動を、カード形式でわかりやすく紹介します。
-    </p>
 
     <!-- Tabs -->
     <div class="activity-tabs fade-up" role="tablist" aria-label="サークル企画の表示切り替え">
@@ -529,8 +538,8 @@
       <div>
         <div class="footer-col-title">情報</div>
         <ul class="footer-links">
-          <li><a href="ticket.html">チケット</a></li>
-          <li><a href="faq.html">Q＆A</a></li>
+          <li><a href="news.html">最新情報</a></li>
+          <li><a href="faq.html">Q&amp;A</a></li>
         </ul>
       </div>
     </div>
@@ -640,10 +649,7 @@
       const metaRows = [
         { icon: '📅', text: ev.date },
         { icon: '⏰', text: ev.time },
-        { icon: '📍', text: ev.location },
-        { icon: '💴', text: ev.price },
       ];
-      if (ev.capacity) metaRows.push({ icon: '👥', text: `定員 ${ev.capacity}` });
 
       const metaHtml = metaRows.map(r => `
         <div class="activity-card-meta-row">
@@ -662,8 +668,6 @@
           <div class="activity-card-body">
             <h3 class="activity-card-title">${escapeHtml(ev.title)}</h3>
             <div class="activity-card-meta">${metaHtml}</div>
-            <p class="activity-card-summary">${escapeHtml(ev.summary)}</p>
-            <button type="button" class="activity-card-button" data-activity-id="${ev.id}" aria-haspopup="dialog">詳細を見る</button>
           </div>
         </article>
       `;
