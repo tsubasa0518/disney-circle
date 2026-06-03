@@ -11,36 +11,36 @@
   --disney-pink: #e91e8c;
   --gradient-magic: linear-gradient(135deg, #001e4d 0%, #0a2e6e 50%, #001e4d 100%);
   --gradient-gold: linear-gradient(135deg, #c8a951 0%, #f0d080 50%, #c8a951 100%);
-  --activity-card-width: 300px;
-  --activity-card-height: 450px;
+  --activity-card-width: 225px;
+  --activity-card-height: 360px;
   --activity-carousel-gap: 20px;
 }
 
 @media (max-width: 360px) {
   :root {
-    --activity-card-width: 280px;
-    --activity-card-height: 420px;
+    --activity-card-width: 210px;
+    --activity-card-height: 336px;
   }
 }
 
 @media (min-width: 768px) {
   :root {
-    --activity-card-width: 320px;
-    --activity-card-height: 480px;
+    --activity-card-width: 240px;
+    --activity-card-height: 384px;
   }
 }
 
 @media (min-width: 1024px) {
   :root {
-    --activity-card-width: 380px;
-    --activity-card-height: 560px;
+    --activity-card-width: 285px;
+    --activity-card-height: 448px;
   }
 }
 
 @media (min-width: 1440px) {
   :root {
-    --activity-card-width: 420px;
-    --activity-card-height: 620px;
+    --activity-card-width: 315px;
+    --activity-card-height: 496px;
   }
 }
 
