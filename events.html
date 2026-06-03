@@ -8,7 +8,7 @@
   <link rel="stylesheet" href="css/style.css" />
   <style>
     /* ===== Activity Events Page (events.html scoped) ===== */
-    .activity-events {
+    :root {
       --activity-navy: #06142e;
       --activity-deep-navy: #020817;
       --activity-card: #0b1733;
@@ -88,6 +88,8 @@
     .activity-card {
       width: 100%;
       max-width: none;
+      height: auto;
+      min-height: 0;
       display: flex;
       flex-direction: column;
       background: var(--activity-card);
