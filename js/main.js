@@ -4,7 +4,7 @@
 // 活動写真を追加する場合は activityItems 配列にオブジェクトを追加してください
 const activityItems = [
   { image: 'images/Activity_pic1.png', title: '新歓インパ',           english: 'Welcome Disney Trip', desc: '新入生を迎えてのディズニーへのインパ企画です。' },
-  { image: 'images/Activity_pic2.png', title: 'ディズニー映画鑑賞会', english: 'watching movies',     desc: 'ディズニー・ピクサー名作映画を一緒に鑑賞する企画です。' },
+  { image: 'images/Activity_pic2.png', title: 'ディズニー映画鑑賞',   english: 'watching movies',     desc: 'ディズニー・ピクサー名作映画を一緒に鑑賞する企画です。' },
   { image: 'images/Activity_pic3.png', title: '一橋祭出店',           english: 'Festival',            desc: '一橋大学の学園祭に出店します。' },
   { image: 'images/Activity_pic4.png', title: '食事会',               english: 'Lunch / Dinner',      desc: '' },
   { image: 'images/Activity_pic6.png', title: '浴衣インパ',           english: 'Yukata Disney',       desc: '' },

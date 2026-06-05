@@ -128,6 +128,16 @@
       gap: 8px;
       color: var(--activity-light-gold);
       border-bottom: 1px solid rgba(216, 180, 90, 0.2);
+      overflow: hidden;
+    }
+
+    .activity-card-image-photo {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
     }
 
     .activity-card-image.is-upcoming {
@@ -563,6 +573,7 @@
         title: '新歓ご飯会',
         emoji: '🍽️',
         imageLabel: 'Welcome Dinner',
+        image: 'images/circle-plan3.png',
         date: '2026年6月7日（日）',
         time: '18:00〜20:00',
         location: '吉祥寺',
@@ -583,6 +594,7 @@
         title: '映画鑑賞企画',
         emoji: '🎬',
         imageLabel: 'Movie Night',
+        image: 'images/circle-plan2.png',
         date: '2026年6月21日（日）',
         time: '13:00〜15:00',
         location: 'レンタルスペース（未定）',
@@ -619,6 +631,7 @@
         title: '新歓・インパ企画',
         emoji: '🏰',
         imageLabel: 'Tokyo DisneySea',
+        image: 'images/circle-plan1.png',
         date: '2026年5月23日（土）',
         time: '終日',
         location: '東京ディズニーシー',
@@ -658,12 +671,16 @@
         </div>
       `).join('');
 
+      const photoHtml = ev.image
+        ? `<img src="${escapeHtml(ev.image)}" alt="${escapeHtml(ev.title)}" class="activity-card-image-photo" loading="lazy">`
+        : `<span class="activity-card-image-emoji" aria-hidden="true">${ev.emoji}</span>
+           <span class="activity-card-image-label">${escapeHtml(ev.imageLabel)}</span>`;
+
       return `
         <article class="activity-card">
-          <div class="activity-card-image ${imageClass}" aria-hidden="true">
+          <div class="activity-card-image ${imageClass}">
+            ${photoHtml}
             <span class="activity-status ${statusClass}">${statusLabel}</span>
-            <span class="activity-card-image-emoji">${ev.emoji}</span>
-            <span class="activity-card-image-label">${escapeHtml(ev.imageLabel)}</span>
           </div>
           <div class="activity-card-body">
             <h3 class="activity-card-title">${escapeHtml(ev.title)}</h3>
