@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>アフヌン同好会 ブログ | Disney Circle Mouse</title>
+  <meta name="description" content="アフヌン同好会のアフタヌーンティー記録ブログです。" />
+  <meta name="robots" content="noindex" />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Noto+Sans+JP:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/afternoon-tea.css" />
+</head>
+<body class="at-page">
+
+  <header class="at-header">
+    <div class="at-eyebrow">Afternoon Tea Club</div>
+    <h1 class="at-title">アフヌン同好会</h1>
+    <div class="at-title-rule"></div>
+    <p class="at-subtitle">ヌン活の記録</p>
+    <a class="at-back" href="index.html">← ホームへ戻る</a>
+  </header>
+
+  <main class="at-grid-wrap">
+    <div id="at-grid" class="at-grid" aria-label="アフタヌーンティーの写真一覧"></div>
+  </main>
+
+  <!-- detail modal -->
+  <div id="at-modal" class="at-modal" role="dialog" aria-modal="true" aria-labelledby="at-modal-shop">
+    <div class="at-modal-card">
+      <button id="at-modal-close" class="at-modal-close" type="button" aria-label="閉じる">✕</button>
+      <h2 id="at-modal-shop" class="at-modal-shop"></h2>
+      <div id="at-modal-meta" class="at-modal-meta"></div>
+      <div id="at-modal-photos" class="at-modal-photos"></div>
+      <div id="at-modal-tags" class="at-tags"></div>
+    </div>
+  </div>
+
+  <footer class="at-footer">Disney Circle Mouse — Afternoon Tea Club</footer>
+
+  <script src="js/afternoon-tea.js"></script>
+</body>
+</html>

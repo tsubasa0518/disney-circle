@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>アフヌン同好会 | Disney Circle Mouse</title>
+  <meta name="description" content="アフヌン同好会 メンバー向けの簡易入口ページです。" />
+  <meta name="robots" content="noindex" />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Noto+Sans+JP:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/afternoon-tea.css" />
+</head>
+<body class="at-page at-login-page">
+
+  <!-- star field (CSS-driven) -->
+  <div class="at-stars" aria-hidden="true"></div>
+
+  <div class="at-lp-wrap">
+
+    <!-- logo -->
+    <div class="at-lp-logo" aria-label="Disney Circle Mouse">
+      <div class="at-lp-icon" aria-hidden="true">
+        <div class="at-lp-icon-ear at-lp-icon-ear--l"></div>
+        <div class="at-lp-icon-ear at-lp-icon-ear--r"></div>
+        <div class="at-lp-icon-face"></div>
+        <div class="at-lp-icon-star" aria-hidden="true">✦</div>
+      </div>
+      <p class="at-lp-brand">DISNEY CIRCLE MOUSE</p>
+    </div>
+
+    <!-- prompt -->
+    <p class="at-lp-prompt">Please enter your password.</p>
+
+    <!-- dot indicators -->
+    <div class="at-lp-dots" aria-live="polite" aria-label="入力状態">
+      <span class="at-dot" data-index="0"></span>
+      <span class="at-dot" data-index="1"></span>
+      <span class="at-dot" data-index="2"></span>
+      <span class="at-dot" data-index="3"></span>
+    </div>
+
+    <!-- lock message -->
+    <p id="at-lock-msg" class="at-lp-lock-msg" role="status" aria-live="polite"></p>
+
+    <!-- numpad -->
+    <div class="at-numpad" role="group" aria-label="テンキー">
+      <button class="at-nkey" data-digit="1" aria-label="1">1</button>
+      <button class="at-nkey" data-digit="2" aria-label="2">2</button>
+      <button class="at-nkey" data-digit="3" aria-label="3">3</button>
+      <button class="at-nkey" data-digit="4" aria-label="4">4</button>
+      <button class="at-nkey" data-digit="5" aria-label="5">5</button>
+      <button class="at-nkey" data-digit="6" aria-label="6">6</button>
+      <button class="at-nkey" data-digit="7" aria-label="7">7</button>
+      <button class="at-nkey" data-digit="8" aria-label="8">8</button>
+      <button class="at-nkey" data-digit="9" aria-label="9">9</button>
+      <div class="at-nkey at-nkey--empty" aria-hidden="true"></div>
+      <button class="at-nkey" data-digit="0" aria-label="0">0</button>
+      <button class="at-nkey at-nkey--del" id="at-del-btn" aria-label="削除">⌫</button>
+    </div>
+
+    <!-- back link -->
+    <a class="at-lp-back" href="index.html">← 戻る</a>
+
+  </div><!-- /.at-lp-wrap -->
+
+  <script src="js/afternoon-tea.js"></script>
+</body>
+</html>
