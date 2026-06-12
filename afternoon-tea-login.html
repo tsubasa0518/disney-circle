@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>アフヌン同好会 | Disney Circle Mouse</title>
+  <meta name="description" content="アフヌン同好会 メンバー向けの簡易入口ページです。" />
+  <meta name="robots" content="noindex" />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Noto+Sans+JP:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/afternoon-tea.css" />
+</head>
+<body class="at-page">
+
+  <header class="at-header">
+    <div class="at-eyebrow">Afternoon Tea Club</div>
+    <h1 class="at-title">アフヌン同好会</h1>
+    <div class="at-title-rule"></div>
+    <p class="at-subtitle">メンバー向けの簡易入口です</p>
+    <a class="at-back" href="index.html">← ホームへ戻る</a>
+  </header>
+
+  <main class="at-login-wrap">
+    <section class="at-login">
+      <div class="at-login-icon" aria-hidden="true">🫖</div>
+      <p class="at-login-lead">合言葉を入力してください</p>
+      <form id="at-login-form" novalidate>
+        <input
+          id="at-password"
+          class="at-input"
+          type="password"
+          inputmode="numeric"
+          autocomplete="off"
+          placeholder="••••"
+          aria-label="合言葉"
+        />
+        <button id="at-submit" class="at-button" type="submit">ENTER</button>
+      </form>
+      <p id="at-login-message" class="at-login-message" role="status" aria-live="polite"></p>
+      <p class="at-login-note">
+        This is a light access gate for members.<br />
+        ※ ブラウザ上で動作する演出としての簡易制限であり、本格的な認証ではありません。
+      </p>
+    </section>
+  </main>
+
+  <footer class="at-footer">Disney Circle Mouse — Afternoon Tea Club</footer>
+
+  <script src="js/afternoon-tea.js"></script>
+</body>
+</html>

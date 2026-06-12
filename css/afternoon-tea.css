@@ -1,0 +1,367 @@
+/* ============================================================
+   Afternoon Tea Club — page-scoped styles
+   Prefix: at-  (avoid collisions with css/style.css)
+   Palette: dusty pink / beige / soft gold, light & airy
+   ============================================================ */
+
+.at-page {
+  --at-pink: #d9b3b8;
+  --at-pink-deep: #b98a92;
+  --at-beige: #f5efe6;
+  --at-beige-soft: #faf6f0;
+  --at-gold: #c9ab6e;
+  --at-gold-soft: #e6d3a8;
+  --at-ink: #5a4a44;
+  --at-ink-soft: #8a766f;
+
+  min-height: 100vh;
+  background: linear-gradient(160deg, var(--at-beige-soft) 0%, var(--at-beige) 55%, #f3e6e3 100%);
+  color: var(--at-ink);
+  font-family: 'Noto Sans JP', sans-serif;
+  font-weight: 300;
+  -webkit-font-smoothing: antialiased;
+}
+
+.at-page a {
+  color: var(--at-pink-deep);
+  text-decoration: none;
+}
+
+/* ---------- shared header ---------- */
+.at-header {
+  text-align: center;
+  padding: 72px 24px 40px;
+}
+
+.at-eyebrow {
+  font-family: 'Cinzel', serif;
+  font-size: 0.72rem;
+  letter-spacing: 0.35em;
+  color: var(--at-gold);
+  text-transform: uppercase;
+  margin-bottom: 14px;
+}
+
+.at-title {
+  font-family: 'Cinzel', serif;
+  font-size: clamp(1.6rem, 4.5vw, 2.4rem);
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  color: var(--at-ink);
+}
+
+.at-title-rule {
+  width: 64px;
+  height: 1px;
+  margin: 22px auto 0;
+  background: linear-gradient(90deg, transparent, var(--at-gold), transparent);
+}
+
+.at-subtitle {
+  margin-top: 16px;
+  font-size: 0.85rem;
+  letter-spacing: 0.08em;
+  color: var(--at-ink-soft);
+}
+
+.at-back {
+  display: inline-block;
+  margin-top: 10px;
+  font-size: 0.78rem;
+  letter-spacing: 0.1em;
+}
+
+.at-back:hover { color: var(--at-gold); }
+
+/* ---------- login card ---------- */
+.at-login-wrap {
+  display: flex;
+  justify-content: center;
+  padding: 8px 24px 96px;
+}
+
+.at-login {
+  width: 100%;
+  max-width: 400px;
+  background: rgba(255, 255, 255, 0.75);
+  border: 1px solid rgba(201, 171, 110, 0.35);
+  border-radius: 18px;
+  box-shadow: 0 18px 45px rgba(90, 74, 68, 0.10);
+  padding: 44px 36px 38px;
+  text-align: center;
+  backdrop-filter: blur(4px);
+}
+
+.at-login-icon {
+  font-size: 1.7rem;
+  margin-bottom: 18px;
+}
+
+.at-login-lead {
+  font-size: 0.86rem;
+  letter-spacing: 0.06em;
+  line-height: 1.9;
+  color: var(--at-ink-soft);
+  margin-bottom: 26px;
+}
+
+.at-input {
+  width: 100%;
+  padding: 13px 16px;
+  border: 1px solid rgba(185, 138, 146, 0.45);
+  border-radius: 10px;
+  background: var(--at-beige-soft);
+  color: var(--at-ink);
+  font-size: 1rem;
+  letter-spacing: 0.4em;
+  text-align: center;
+  outline: none;
+  transition: border-color 0.25s, box-shadow 0.25s;
+}
+
+.at-input:focus {
+  border-color: var(--at-gold);
+  box-shadow: 0 0 0 3px rgba(201, 171, 110, 0.18);
+}
+
+.at-input:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.at-button {
+  width: 100%;
+  margin-top: 18px;
+  padding: 13px 16px;
+  border: none;
+  border-radius: 10px;
+  background: linear-gradient(135deg, var(--at-pink) 0%, var(--at-pink-deep) 100%);
+  color: #fff;
+  font-family: 'Noto Sans JP', sans-serif;
+  font-size: 0.9rem;
+  letter-spacing: 0.25em;
+  cursor: pointer;
+  transition: opacity 0.25s, transform 0.2s;
+}
+
+.at-button:hover:not(:disabled) {
+  opacity: 0.88;
+  transform: translateY(-1px);
+}
+
+.at-button:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.at-login-message {
+  min-height: 1.4em;
+  margin-top: 18px;
+  font-size: 0.8rem;
+  letter-spacing: 0.05em;
+  color: var(--at-pink-deep);
+}
+
+.at-login-note {
+  margin-top: 26px;
+  font-size: 0.68rem;
+  letter-spacing: 0.08em;
+  color: rgba(138, 118, 111, 0.65);
+  line-height: 1.8;
+}
+
+/* ---------- photo grid ---------- */
+.at-grid-wrap {
+  max-width: 980px;
+  margin: 0 auto;
+  padding: 16px 28px 110px;
+}
+
+.at-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+}
+
+.at-card {
+  border: none;
+  padding: 0;
+  background: none;
+  cursor: pointer;
+  font: inherit;
+  color: inherit;
+  text-align: inherit;
+}
+
+.at-photo {
+  aspect-ratio: 3 / 4;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  border-radius: 14px;
+  background: linear-gradient(150deg, #f7ece9 0%, var(--at-beige-soft) 60%, #f2e8dc 100%);
+  border: 1px solid rgba(201, 171, 110, 0.30);
+  box-shadow: 0 8px 24px rgba(90, 74, 68, 0.07);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.at-card:hover .at-photo,
+.at-card:focus-visible .at-photo {
+  transform: translateY(-3px);
+  box-shadow: 0 14px 32px rgba(90, 74, 68, 0.13);
+}
+
+.at-photo-icon {
+  width: 34px;
+  height: 34px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  border: 1px solid var(--at-gold-soft);
+  color: var(--at-gold);
+  font-size: 0.95rem;
+  background: rgba(255, 255, 255, 0.55);
+}
+
+.at-photo-label {
+  font-family: 'Cinzel', serif;
+  font-size: 0.6rem;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--at-ink-soft);
+}
+
+/* ---------- modal ---------- */
+.at-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  background: rgba(90, 74, 68, 0.45);
+  backdrop-filter: blur(3px);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.25s ease, visibility 0.25s ease;
+}
+
+.at-modal.at-modal-open {
+  opacity: 1;
+  visibility: visible;
+}
+
+.at-modal-card {
+  width: 100%;
+  max-width: 460px;
+  max-height: 85vh;
+  overflow-y: auto;
+  background: var(--at-beige-soft);
+  border: 1px solid rgba(201, 171, 110, 0.4);
+  border-radius: 18px;
+  box-shadow: 0 24px 60px rgba(60, 45, 40, 0.25);
+  padding: 38px 34px 34px;
+  position: relative;
+}
+
+.at-modal-close {
+  position: absolute;
+  top: 14px;
+  right: 16px;
+  width: 34px;
+  height: 34px;
+  border: none;
+  border-radius: 50%;
+  background: rgba(217, 179, 184, 0.25);
+  color: var(--at-ink-soft);
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.at-modal-close:hover { background: rgba(217, 179, 184, 0.5); }
+
+.at-modal-shop {
+  font-family: 'Cinzel', serif;
+  font-size: 1.15rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  color: var(--at-ink);
+  margin-bottom: 6px;
+  padding-right: 30px;
+}
+
+.at-modal-meta {
+  font-size: 0.8rem;
+  letter-spacing: 0.05em;
+  color: var(--at-ink-soft);
+  line-height: 1.9;
+  margin-bottom: 20px;
+}
+
+.at-modal-photos {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.at-modal-photos .at-photo {
+  border-radius: 10px;
+  gap: 6px;
+}
+
+.at-modal-photos .at-photo-icon {
+  width: 24px;
+  height: 24px;
+  font-size: 0.7rem;
+}
+
+.at-modal-photos .at-photo-label {
+  font-size: 0.45rem;
+  letter-spacing: 0.2em;
+}
+
+.at-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.at-tag {
+  font-size: 0.72rem;
+  letter-spacing: 0.06em;
+  color: var(--at-pink-deep);
+  background: rgba(217, 179, 184, 0.18);
+  border: 1px solid rgba(217, 179, 184, 0.45);
+  border-radius: 999px;
+  padding: 4px 12px;
+}
+
+/* ---------- footer ---------- */
+.at-footer {
+  text-align: center;
+  padding: 0 24px 56px;
+  font-family: 'Cinzel', serif;
+  font-size: 0.62rem;
+  letter-spacing: 0.3em;
+  color: rgba(138, 118, 111, 0.55);
+  text-transform: uppercase;
+}
+
+/* ---------- responsive ---------- */
+@media (max-width: 640px) {
+  .at-grid { grid-template-columns: repeat(2, 1fr); gap: 16px; }
+  .at-grid-wrap { padding-left: 20px; padding-right: 20px; }
+  .at-header { padding-top: 56px; }
+}
+
+@media (max-width: 380px) {
+  .at-grid { grid-template-columns: 1fr; }
+  .at-login { padding: 36px 24px 30px; }
+}
