@@ -25,6 +25,34 @@
     let locked = false;
     let lockTimer = null;
 
+    /* -- safe storage helpers --
+       Web Storage may be unavailable (blocked site data, restricted
+       webview, etc.) and can throw on access. These wrappers degrade
+       gracefully: persistence is best-effort, login is never broken. */
+    function safeStorageGet(key) {
+      try {
+        return localStorage.getItem(key);
+      } catch (e) {
+        return null;
+      }
+    }
+
+    function safeStorageSet(key, value) {
+      try {
+        localStorage.setItem(key, value);
+      } catch (e) {
+        /* persistence unavailable — in-memory lock still applies */
+      }
+    }
+
+    function safeStorageRemove(key) {
+      try {
+        localStorage.removeItem(key);
+      } catch (e) {
+        /* nothing to clean up if storage is unavailable */
+      }
+    }
+
     const dots    = document.querySelectorAll('.at-dot');
     const lockMsg = document.getElementById('at-lock-msg');
     const delBtn  = document.getElementById('at-del-btn');
@@ -39,7 +67,7 @@
 
     /* -- lock state -- */
     function lockedUntil() {
-      const v = Number(localStorage.getItem(LOCK_KEY) || 0);
+      const v = Number(safeStorageGet(LOCK_KEY) || 0);
       return v > Date.now() ? v : 0;
     }
 
@@ -52,7 +80,7 @@
         const left = Math.ceil((until - Date.now()) / 1000);
         if (left <= 0) {
           clearInterval(lockTimer);
-          localStorage.removeItem(LOCK_KEY);
+          safeStorageRemove(LOCK_KEY);
           locked = false;
           nkeys.forEach(function (k) { k.disabled = false; });
           if (delBtn) delBtn.disabled = false;
@@ -73,13 +101,14 @@
     function judge() {
       const entered = digits.join('');
       if (entered === PASSWORD) {
-        localStorage.removeItem(LOCK_KEY);
+        // Best-effort cleanup; redirect must run even if storage throws.
+        safeStorageRemove(LOCK_KEY);
         window.location.href = 'afternoon-tea.html';
       } else {
         digits = [];
         renderDots();
         const until = Date.now() + LOCK_MS;
-        localStorage.setItem(LOCK_KEY, String(until));
+        safeStorageSet(LOCK_KEY, String(until));
         setLocked(until);
       }
     }
