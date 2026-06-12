@@ -11,40 +11,56 @@
 </head>
 <body class="at-page at-login-page">
 
+  <!-- star field (CSS-driven) -->
   <div class="at-stars" aria-hidden="true"></div>
 
-  <header class="at-header">
-    <div class="at-eyebrow">Afternoon Tea Club</div>
-    <h1 class="at-title">アフヌン同好会</h1>
-    <div class="at-title-rule"></div>
-    <a class="at-back" href="index.html">← ホームへ戻る</a>
-  </header>
+  <div class="at-lp-wrap">
 
-  <main class="at-login-wrap">
-    <section class="at-login">
-      <div class="at-login-icon" aria-hidden="true">🫖</div>
-      <p class="at-login-lead">Please enter your password.</p>
-      <form id="at-login-form" novalidate>
-        <input
-          id="at-password"
-          class="at-input"
-          type="password"
-          inputmode="numeric"
-          autocomplete="off"
-          placeholder="••••"
-          aria-label="合言葉"
-        />
-        <button id="at-submit" class="at-button" type="submit">ENTER</button>
-      </form>
-      <p id="at-login-message" class="at-login-message" role="status" aria-live="polite"></p>
-      <p class="at-login-note">
-        This is a light access gate for members.<br />
-        ※ ブラウザ上で動作する演出としての簡易制限であり、本格的な認証ではありません。
-      </p>
-    </section>
-  </main>
+    <!-- logo -->
+    <div class="at-lp-logo" aria-label="Disney Circle Mouse">
+      <div class="at-lp-icon" aria-hidden="true">
+        <div class="at-lp-icon-ear at-lp-icon-ear--l"></div>
+        <div class="at-lp-icon-ear at-lp-icon-ear--r"></div>
+        <div class="at-lp-icon-face"></div>
+        <div class="at-lp-icon-star" aria-hidden="true">✦</div>
+      </div>
+      <p class="at-lp-brand">DISNEY CIRCLE MOUSE</p>
+    </div>
 
-  <footer class="at-footer">Disney Circle Mouse — Afternoon Tea Club</footer>
+    <!-- prompt -->
+    <p class="at-lp-prompt">Please enter your password.</p>
+
+    <!-- dot indicators -->
+    <div class="at-lp-dots" aria-live="polite" aria-label="入力状態">
+      <span class="at-dot" data-index="0"></span>
+      <span class="at-dot" data-index="1"></span>
+      <span class="at-dot" data-index="2"></span>
+      <span class="at-dot" data-index="3"></span>
+    </div>
+
+    <!-- lock message -->
+    <p id="at-lock-msg" class="at-lp-lock-msg" role="status" aria-live="polite"></p>
+
+    <!-- numpad -->
+    <div class="at-numpad" role="group" aria-label="テンキー">
+      <button class="at-nkey" data-digit="1" aria-label="1">1</button>
+      <button class="at-nkey" data-digit="2" aria-label="2">2</button>
+      <button class="at-nkey" data-digit="3" aria-label="3">3</button>
+      <button class="at-nkey" data-digit="4" aria-label="4">4</button>
+      <button class="at-nkey" data-digit="5" aria-label="5">5</button>
+      <button class="at-nkey" data-digit="6" aria-label="6">6</button>
+      <button class="at-nkey" data-digit="7" aria-label="7">7</button>
+      <button class="at-nkey" data-digit="8" aria-label="8">8</button>
+      <button class="at-nkey" data-digit="9" aria-label="9">9</button>
+      <div class="at-nkey at-nkey--empty" aria-hidden="true"></div>
+      <button class="at-nkey" data-digit="0" aria-label="0">0</button>
+      <button class="at-nkey at-nkey--del" id="at-del-btn" aria-label="削除">⌫</button>
+    </div>
+
+    <!-- back link -->
+    <a class="at-lp-back" href="index.html">← 戻る</a>
+
+  </div><!-- /.at-lp-wrap -->
 
   <script src="js/afternoon-tea.js"></script>
 </body>

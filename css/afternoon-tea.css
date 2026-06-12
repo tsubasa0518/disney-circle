@@ -3,20 +3,23 @@
    Prefix: at-  (avoid collisions with css/style.css)
 
    Two variants:
-     .at-page               → shared base
-     .at-page.at-login-page → login screen (dark navy, matches main site)
-     .at-page (blog only)   → beige/pink palette
+     .at-page               → shared base (blog page: beige/pink)
+     .at-page.at-login-page → login screen (dark navy, numpad style)
+   ============================================================ */
+
+/* ============================================================
+   Base / shared
    ============================================================ */
 
 .at-page {
-  --at-pink: #d9b3b8;
+  --at-pink:      #d9b3b8;
   --at-pink-deep: #b98a92;
-  --at-beige: #f5efe6;
-  --at-beige-soft: #faf6f0;
-  --at-gold: #c8a951;
+  --at-beige:     #f5efe6;
+  --at-beige-soft:#faf6f0;
+  --at-gold:      #c8a951;
   --at-gold-soft: #f0d080;
-  --at-ink: #5a4a44;
-  --at-ink-soft: #8a766f;
+  --at-ink:       #5a4a44;
+  --at-ink-soft:  #8a766f;
 
   min-height: 100vh;
   background: linear-gradient(160deg, var(--at-beige-soft) 0%, var(--at-beige) 55%, #f3e6e3 100%);
@@ -32,106 +35,9 @@
 }
 
 /* ============================================================
-   Login page variant — dark navy (matches main site palette)
+   Blog page — shared header (afternoon-tea.html)
    ============================================================ */
 
-.at-login-page {
-  background: linear-gradient(160deg, #000a1e 0%, #001e4d 55%, #000a1e 100%);
-  color: var(--at-gold-soft);
-  position: relative;
-  overflow-x: hidden;
-}
-
-/* CSS-only star field */
-.at-stars {
-  position: fixed;
-  inset: 0;
-  pointer-events: none;
-  z-index: 0;
-  background-image:
-    radial-gradient(circle, rgba(240, 208, 128, 0.8) 1px, transparent 1px),
-    radial-gradient(circle, rgba(255, 255, 255, 0.55) 1px, transparent 1px),
-    radial-gradient(circle, rgba(200, 169, 81, 0.5) 1px, transparent 1px);
-  background-size: 97px 97px, 61px 61px, 143px 143px;
-  background-position: 13px 7px, 47px 31px, 72px 58px;
-  opacity: 0.45;
-}
-
-.at-login-page .at-header,
-.at-login-page .at-login-wrap,
-.at-login-page .at-footer {
-  position: relative;
-  z-index: 1;
-}
-
-.at-login-page a { color: rgba(240, 208, 128, 0.65); }
-.at-login-page a:hover { color: var(--at-gold-soft); }
-
-.at-login-page .at-eyebrow {
-  color: var(--at-gold);
-  opacity: 0.85;
-}
-
-.at-login-page .at-title {
-  color: var(--at-gold-soft);
-}
-
-.at-login-page .at-title-rule {
-  background: linear-gradient(90deg, transparent, var(--at-gold), transparent);
-  opacity: 0.7;
-}
-
-.at-login-page .at-login {
-  background: rgba(0, 20, 60, 0.72);
-  border: 1px solid rgba(200, 169, 81, 0.45);
-  box-shadow:
-    0 18px 48px rgba(0, 0, 0, 0.45),
-    0 0 80px rgba(200, 169, 81, 0.04);
-  backdrop-filter: blur(8px);
-}
-
-.at-login-page .at-login-lead {
-  color: rgba(240, 208, 128, 0.7);
-}
-
-.at-login-page .at-input {
-  background: rgba(0, 10, 30, 0.65);
-  border: 1px solid rgba(200, 169, 81, 0.4);
-  color: var(--at-gold-soft);
-}
-
-.at-login-page .at-input::placeholder {
-  color: rgba(200, 169, 81, 0.25);
-}
-
-.at-login-page .at-input:focus {
-  border-color: var(--at-gold);
-  box-shadow: 0 0 0 3px rgba(200, 169, 81, 0.18);
-}
-
-.at-login-page .at-input:disabled {
-  opacity: 0.35;
-}
-
-.at-login-page .at-button {
-  background: linear-gradient(135deg, var(--at-gold) 0%, var(--at-gold-soft) 50%, var(--at-gold) 100%);
-  color: #001e4d;
-  font-weight: 500;
-}
-
-.at-login-page .at-login-message {
-  color: #f0a07a;
-}
-
-.at-login-page .at-login-note {
-  color: rgba(200, 169, 81, 0.30);
-}
-
-.at-login-page .at-footer {
-  color: rgba(200, 169, 81, 0.28);
-}
-
-/* ---------- shared header ---------- */
 .at-header {
   text-align: center;
   padding: 72px 24px 40px;
@@ -177,105 +83,8 @@
 
 .at-back:hover { color: var(--at-gold); }
 
-/* ---------- login card ---------- */
-.at-login-wrap {
-  display: flex;
-  justify-content: center;
-  padding: 8px 24px 96px;
-}
-
-.at-login {
-  width: 100%;
-  max-width: 400px;
-  background: rgba(255, 255, 255, 0.75);
-  border: 1px solid rgba(201, 171, 110, 0.35);
-  border-radius: 18px;
-  box-shadow: 0 18px 45px rgba(90, 74, 68, 0.10);
-  padding: 44px 36px 38px;
-  text-align: center;
-  backdrop-filter: blur(4px);
-}
-
-.at-login-icon {
-  font-size: 1.7rem;
-  margin-bottom: 18px;
-}
-
-.at-login-lead {
-  font-size: 0.86rem;
-  letter-spacing: 0.06em;
-  line-height: 1.9;
-  color: var(--at-ink-soft);
-  margin-bottom: 26px;
-}
-
-.at-input {
-  width: 100%;
-  padding: 13px 16px;
-  border: 1px solid rgba(185, 138, 146, 0.45);
-  border-radius: 10px;
-  background: var(--at-beige-soft);
-  color: var(--at-ink);
-  font-size: 1rem;
-  letter-spacing: 0.4em;
-  text-align: center;
-  outline: none;
-  transition: border-color 0.25s, box-shadow 0.25s;
-}
-
-.at-input:focus {
-  border-color: var(--at-gold);
-  box-shadow: 0 0 0 3px rgba(201, 171, 110, 0.18);
-}
-
-.at-input:disabled {
-  opacity: 0.5;
-  cursor: not-allowed;
-}
-
-.at-button {
-  width: 100%;
-  margin-top: 18px;
-  padding: 13px 16px;
-  border: none;
-  border-radius: 10px;
-  background: linear-gradient(135deg, var(--at-pink) 0%, var(--at-pink-deep) 100%);
-  color: #fff;
-  font-family: 'Noto Sans JP', sans-serif;
-  font-size: 0.9rem;
-  letter-spacing: 0.25em;
-  cursor: pointer;
-  transition: opacity 0.25s, transform 0.2s;
-}
-
-.at-button:hover:not(:disabled) {
-  opacity: 0.88;
-  transform: translateY(-1px);
-}
-
-.at-button:disabled {
-  opacity: 0.45;
-  cursor: not-allowed;
-  transform: none;
-}
-
-.at-login-message {
-  min-height: 1.4em;
-  margin-top: 18px;
-  font-size: 0.8rem;
-  letter-spacing: 0.05em;
-  color: var(--at-pink-deep);
-}
-
-.at-login-note {
-  margin-top: 26px;
-  font-size: 0.68rem;
-  letter-spacing: 0.08em;
-  color: rgba(138, 118, 111, 0.65);
-  line-height: 1.8;
-}
-
 /* ---------- photo grid ---------- */
+
 .at-grid-wrap {
   max-width: 980px;
   margin: 0 auto;
@@ -340,6 +149,7 @@
 }
 
 /* ---------- modal ---------- */
+
 .at-modal {
   position: fixed;
   inset: 0;
@@ -415,21 +225,9 @@
   margin-bottom: 20px;
 }
 
-.at-modal-photos .at-photo {
-  border-radius: 10px;
-  gap: 6px;
-}
-
-.at-modal-photos .at-photo-icon {
-  width: 24px;
-  height: 24px;
-  font-size: 0.7rem;
-}
-
-.at-modal-photos .at-photo-label {
-  font-size: 0.45rem;
-  letter-spacing: 0.2em;
-}
+.at-modal-photos .at-photo { border-radius: 10px; gap: 6px; }
+.at-modal-photos .at-photo-icon { width: 24px; height: 24px; font-size: 0.7rem; }
+.at-modal-photos .at-photo-label { font-size: 0.45rem; letter-spacing: 0.2em; }
 
 .at-tags {
   display: flex;
@@ -447,7 +245,8 @@
   padding: 4px 12px;
 }
 
-/* ---------- footer ---------- */
+/* ---------- blog page footer ---------- */
+
 .at-footer {
   text-align: center;
   padding: 0 24px 56px;
@@ -458,7 +257,8 @@
   text-transform: uppercase;
 }
 
-/* ---------- responsive ---------- */
+/* ---------- responsive (blog) ---------- */
+
 @media (max-width: 640px) {
   .at-grid { grid-template-columns: repeat(2, 1fr); gap: 16px; }
   .at-grid-wrap { padding-left: 20px; padding-right: 20px; }
@@ -467,5 +267,255 @@
 
 @media (max-width: 380px) {
   .at-grid { grid-template-columns: 1fr; }
-  .at-login { padding: 36px 24px 30px; }
+}
+
+/* ============================================================
+   Login page — dark navy numpad style  (.at-login-page)
+   Scoped entirely under body.at-login-page — no blog bleed
+   ============================================================ */
+
+.at-login-page {
+  background: linear-gradient(170deg, #000a1e 0%, #001540 40%, #0a0a2e 70%, #000a1e 100%);
+  color: #ffffff;
+  overflow-x: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+/* CSS star field */
+.at-stars {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  background-image:
+    radial-gradient(circle, rgba(240, 208, 128, 0.85) 1px, transparent 1px),
+    radial-gradient(circle, rgba(255, 255, 255, 0.6)  1px, transparent 1px),
+    radial-gradient(circle, rgba(200, 169, 81,  0.55) 1px, transparent 1px),
+    radial-gradient(circle, rgba(255, 255, 255, 0.35) 1px, transparent 1px);
+  background-size:
+    113px 113px,
+    67px  67px,
+    157px 157px,
+    89px  89px;
+  background-position:
+    17px 11px,
+    53px 37px,
+    79px 63px,
+    31px 81px;
+  opacity: 0.5;
+}
+
+/* ---- full-screen wrapper ---- */
+.at-lp-wrap {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  padding: 40px 24px 32px;
+  gap: 0;
+  /* clamp vertical gaps via margin on children */
+}
+
+/* ---- Mickey logo ---- */
+.at-lp-logo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 28px;
+}
+
+.at-lp-icon {
+  position: relative;
+  width: 72px;
+  height: 72px;
+  margin-bottom: 14px;
+}
+
+.at-lp-icon-face {
+  position: absolute;
+  inset: 12px 0 0;
+  width: 72px;
+  height: 60px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 38% 36%, #c8a951 0%, #9a7a28 60%, #6b5218 100%);
+  box-shadow:
+    0 0 18px rgba(200, 169, 81, 0.45),
+    inset 0 -4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.at-lp-icon-ear {
+  position: absolute;
+  top: 0;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 40% 36%, #c8a951 0%, #7d6020 100%);
+  box-shadow: 0 0 10px rgba(200, 169, 81, 0.35);
+}
+
+.at-lp-icon-ear--l { left: -4px; }
+.at-lp-icon-ear--r { right: -4px; }
+
+.at-lp-icon-star {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-top: 12px;
+  font-size: 1.1rem;
+  color: rgba(255, 240, 160, 0.75);
+  text-shadow: 0 0 6px rgba(255, 220, 80, 0.7);
+}
+
+.at-lp-brand {
+  font-family: 'Cinzel', serif;
+  font-size: 0.65rem;
+  font-weight: 400;
+  letter-spacing: 0.38em;
+  color: rgba(240, 208, 128, 0.75);
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+/* ---- prompt ---- */
+.at-lp-prompt {
+  font-family: 'Noto Sans JP', sans-serif;
+  font-size: 0.88rem;
+  font-weight: 300;
+  letter-spacing: 0.06em;
+  color: rgba(255, 255, 255, 0.7);
+  margin-bottom: 28px;
+  text-align: center;
+}
+
+/* ---- dot indicators ---- */
+.at-lp-dots {
+  display: flex;
+  gap: 18px;
+  margin-bottom: 12px;
+}
+
+.at-dot {
+  display: block;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  border: 1.5px solid rgba(200, 169, 81, 0.7);
+  background: transparent;
+  transition: background 0.15s ease, border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.at-dot--filled {
+  background: var(--at-gold, #c8a951);
+  border-color: var(--at-gold, #c8a951);
+  box-shadow: 0 0 8px rgba(200, 169, 81, 0.6);
+}
+
+/* ---- lock message ---- */
+.at-lp-lock-msg {
+  min-height: 1.4em;
+  font-size: 0.78rem;
+  letter-spacing: 0.05em;
+  color: rgba(255, 160, 100, 0.9);
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+/* ---- numpad ---- */
+.at-numpad {
+  display: grid;
+  grid-template-columns: repeat(3, 68px);
+  gap: 14px;
+  margin-bottom: 32px;
+}
+
+.at-nkey {
+  width: 68px;
+  height: 68px;
+  border-radius: 50%;
+  border: 1px solid rgba(200, 169, 81, 0.45);
+  background: rgba(0, 20, 60, 0.55);
+  color: rgba(240, 220, 160, 0.92);
+  font-family: 'Cinzel', serif;
+  font-size: 1.35rem;
+  font-weight: 400;
+  letter-spacing: 0.04em;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.15s, box-shadow 0.15s, transform 0.1s;
+  -webkit-tap-highlight-color: transparent;
+  user-select: none;
+  backdrop-filter: blur(4px);
+}
+
+.at-nkey:hover:not(:disabled) {
+  background: rgba(200, 169, 81, 0.15);
+  box-shadow: 0 0 16px rgba(200, 169, 81, 0.25);
+}
+
+.at-nkey:active:not(:disabled) {
+  transform: scale(0.93);
+  background: rgba(200, 169, 81, 0.25);
+}
+
+.at-nkey:disabled {
+  opacity: 0.28;
+  cursor: not-allowed;
+}
+
+.at-nkey--empty {
+  pointer-events: none;
+  background: transparent;
+  border-color: transparent;
+  cursor: default;
+}
+
+.at-nkey--del {
+  font-family: 'Noto Sans JP', sans-serif;
+  font-size: 1.2rem;
+  color: rgba(240, 200, 140, 0.75);
+  border-color: rgba(200, 169, 81, 0.28);
+}
+
+/* ---- back link ---- */
+.at-lp-back {
+  font-size: 0.78rem;
+  letter-spacing: 0.12em;
+  color: rgba(200, 169, 81, 0.5);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.at-lp-back:hover {
+  color: rgba(240, 208, 128, 0.9);
+}
+
+/* ---- responsive (login) ---- */
+@media (max-width: 380px) {
+  .at-numpad {
+    grid-template-columns: repeat(3, 60px);
+    gap: 12px;
+  }
+  .at-nkey {
+    width: 60px;
+    height: 60px;
+    font-size: 1.15rem;
+  }
+  .at-lp-wrap { padding: 32px 16px 24px; }
+}
+
+@media (min-width: 640px) {
+  /* center the numpad like a phone screen on wide displays */
+  .at-lp-wrap {
+    max-width: 380px;
+    margin-left: auto;
+    margin-right: auto;
+  }
 }
